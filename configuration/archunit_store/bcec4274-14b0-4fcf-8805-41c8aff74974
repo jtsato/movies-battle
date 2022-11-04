@@ -1,0 +1,7 @@
+Class <io.github.jtsato.moviesbattle.archunit.CodingRulesTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (CodingRulesTest.java:0)
+Class <io.github.jtsato.moviesbattle.archunit.ControllerRulesTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (ControllerRulesTest.java:0)
+Class <io.github.jtsato.moviesbattle.archunit.CyclicDependencyRulesTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (CyclicDependencyRulesTest.java:0)
+Class <io.github.jtsato.moviesbattle.archunit.FrozenRulesTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (FrozenRulesTest.java:0)
+Class <io.github.jtsato.moviesbattle.archunit.InterfaceRulesTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (InterfaceRulesTest.java:0)
+Class <io.github.jtsato.moviesbattle.archunit.MethodsTest> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (MethodsTest.java:0)
+Class <io.github.jtsato.moviesbattle.configuration.SwaggerUIConfiguration> has annotation member of type <io.github.jtsato.moviesbattle.MoviesBattleApplication> in (SwaggerUIConfiguration.java:0)

@@ -1,0 +1,69 @@
+logging:
+   level:
+      io.github.jtsato.moviesbattle: debug
+      org.springframework.web: warn
+      io.swagger.models.parameters.AbstractSerializableParameter: error
+server:
+   http2:
+      enabled: true
+   port: ${PORT:8081}
+   error:
+      whitelabel:
+         enabled: true
+spring:
+   application:
+      name: MoviesBattle
+   devtools:
+      restart:
+         enabled: true
+      livereload:
+         enabled: true      
+      add-properties: true
+   jackson:
+      serialization:
+         write-dates-as-timestamps: false
+         fail-on-empty-beans: false
+   datasource:
+      url: jdbc:p6spy:h2:mem:datajpa;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password: null
+      sqlScriptEncoding: UTF-8
+      driver-class-name: com.p6spy.engine.spy.P6SpyDriver      
+      hikari:
+         minimum-idle: 2
+         maximum-pool-size: 10
+         connection-timeout: 30000
+         idle-timeout: 300000
+         max-lifetime: 600000
+   jpa:
+      open-in-view: false
+      show-sql: false
+      properties:
+         hibernate:
+            dialect: org.hibernate.dialect.H2Dialect
+            generate_statistics: false
+            jdbc:
+               batch_size: 30
+               order_inserts: true
+               order_updates: true
+            cache:
+               use_second_level_cache: false
+            connection:
+               provider_disables_autocommit: false
+      hibernate:
+         ddl-auto: create-drop
+   data:
+      rest:
+         detection-strategy: annotated
+   h2:
+      console:
+         enabled: true
+         path: /h2-console
+         settings:
+            trace: false
+            web-allow-others: false
+
+springdoc:
+   swagger-ui:
+      enabled: true
+      path: /swagger-ui.html

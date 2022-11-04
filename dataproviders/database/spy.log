@@ -1,0 +1,2 @@
+1667583369673|8|statement|connection 0|url jdbc:p6spy:h2:mem:datajpa;DB_CLOSE_ON_EXIT=FALSE|select * from INFORMATION_SCHEMA.SEQUENCES|select * from INFORMATION_SCHEMA.SEQUENCES
+1667583370888|0|statement|connection 0|url jdbc:p6spy:h2:mem:datajpa;DB_CLOSE_ON_EXIT=FALSE|select * from INFORMATION_SCHEMA.SEQUENCES|select * from INFORMATION_SCHEMA.SEQUENCES
