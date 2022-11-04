@@ -22,7 +22,7 @@
         <maven-failsafe-plugin.version>2.22.0</maven-failsafe-plugin.version>
         <javax.inject.version>1</javax.inject.version>
         <validation.api.version>2.0.1.Final</validation.api.version>
-        <hibernate-validator.version>6.1.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <javax.el.version>3.0.0</javax.el.version>
         <lombok.version>1.18.24</lombok.version>
         <commons-lang3.version>3.9</commons-lang3.version>
