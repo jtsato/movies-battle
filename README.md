@@ -26,20 +26,14 @@
 
 ## Running the application locally
 
-```sh Windows
-mvn clean install -Dmaven.test.skip=true
-mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=test" -f ./configuration
 ```
-```sh Linux
 mvn clean install -Dmaven.test.skip=true
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=test" -f ./configuration
 ```
 
 ## Running the tests locally
-```sh Windows
-mvn -e clean install verify
+
 ```
-```sh Linux
 mvn -e clean install verify
 ```
 
