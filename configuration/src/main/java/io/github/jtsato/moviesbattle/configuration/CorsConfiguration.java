@@ -1,16 +1,10 @@
 package io.github.jtsato.moviesbattle.configuration;
 
-import java.io.IOException;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Component;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author Jorge Takeshi Sato
@@ -30,7 +24,6 @@ public class CorsConfiguration implements Filter {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, HEAD, OPTIONS, DELETE, PATCH");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
-        response.setHeader("Access-Control-Expose-Headers", "Location");
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

@@ -23,7 +23,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <okta.version>1.4.0</okta.version>
+        <okta.version>2.1.6</okta.version>
         <archunit-junit5.version>1.0.0</archunit-junit5.version>
         <sonar.coverage.exclusions>
             **/src/**/configuration/**,

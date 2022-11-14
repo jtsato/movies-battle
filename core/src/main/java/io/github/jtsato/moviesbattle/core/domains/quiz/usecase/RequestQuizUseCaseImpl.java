@@ -156,14 +156,14 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
 
     private void checkIfTheCombinationsIsOver(List<Quiz> quizzes) {
         final Long count = getAllMoviesCountGateway.execute();
-        final BigInteger combinationsCount = combinationWithRepetition(Math.toIntExact(count), 2);
+        final BigInteger combinationsCount = combinationWithRepetition(Math.toIntExact(count));
         if (combinationsCount.compareTo(BigInteger.valueOf(quizzes.size())) <= 0) {
             throw new NotFoundException("validation.movie.combinations.over");
         }
     }
 
-    private static BigInteger combinationWithRepetition(final int n, final int r) {
-        return factorial(n).divide(factorial(r).multiply(factorial(n - r)));
+    private static BigInteger combinationWithRepetition(final int n) {
+        return factorial(n).divide(factorial(2).multiply(factorial(n - 2)));
     }
 
     private static BigInteger factorial(final int n) {

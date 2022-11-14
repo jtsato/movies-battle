@@ -3,8 +3,8 @@ package io.github.jtsato.moviesbattle.dataprovider.domains.bet;
 import io.github.jtsato.moviesbattle.core.domains.bet.model.Bet;
 import io.github.jtsato.moviesbattle.core.domains.bet.usecase.RegisterBetGateway;
 import io.github.jtsato.moviesbattle.dataprovider.domains.quiz.QuizRepository;
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,17 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jorge Takeshi Sato
  */
 
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class RegisterBetProvider implements RegisterBetGateway {
 
     private final BetMapper betMapper = Mappers.getMapper(BetMapper.class);
 
-    @Autowired
-    private BetRepository betRepository;
+    private final BetRepository betRepository;
 
-    @Autowired
-    private QuizRepository quizRepository;
+    private final QuizRepository quizRepository;
 
     @Override
     public Bet execute(final Bet bet) {
