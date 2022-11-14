@@ -42,7 +42,7 @@ public class StartGameUseCaseImpl implements StartGameUseCase {
 
         final Player player = getPlayerOrRegister(command.getPlayerEmail(), command.getPlayerName());
 
-        checkGameInProgressByPlayerId(player.getId());
+        checkGameInProgressByPlayerId(player.id());
 
         final LocalDateTime createdAt = getLocalDateTime.now();
         final LocalDateTime updatedAt = getLocalDateTime.now();
@@ -66,7 +66,7 @@ public class StartGameUseCaseImpl implements StartGameUseCase {
         getGameByPlayerIdAndStatusGateway.execute(playerId, Status.IN_PROGRESS)
             .ifPresent(game -> {
                 final String messageKey = "validation.game.already.in.progress";
-                throw new InvalidActionException(messageKey, String.valueOf(game.getId()));
+                throw new InvalidActionException(messageKey, String.valueOf(game.id()));
             });
     }
 }

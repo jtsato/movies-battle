@@ -44,7 +44,7 @@ public class EndGameUseCaseImpl implements EndGameUseCase {
     public Game execute(final EndGameCommand command) {
 
         final Player player = getPlayerOrRegister(command.getPlayerEmail(), command.getPlayerName());
-        final Long gameId = getGameInProgressByPlayerId(player.getId()).getId();
+        final Long gameId = getGameInProgressByPlayerId(player.id()).id();
 
         checkIfGameHasUnansweredQuiz(gameId);
 

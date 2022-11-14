@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.movie;
 
 import io.github.jtsato.moviesbattle.core.domains.movie.xcutting.GetAllMoviesCountGateway;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jorge Takeshi Sato
  */
 
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
 public class GetAllMoviesCountProvider implements GetAllMoviesCountGateway {
 
-    @Autowired
-    MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     @Override
     public Long execute() {

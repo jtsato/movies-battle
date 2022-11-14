@@ -44,7 +44,7 @@ public class QuizEntity implements Serializable {
     private GameEntity game;
 
     @JoinColumn(name = "BET_ID", foreignKey = @ForeignKey(name = "FK_QUIZZES_QUIZ_ID"))
-    @OneToOne(optional = true, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private BetEntity bet;
 
     @Column(name = "OPTION_ONE_ID", nullable = false)
@@ -92,13 +92,9 @@ public class QuizEntity implements Serializable {
         }
         final QuizEntity other = (QuizEntity) obj;
         if (id == null) {
-            if (other.id != null) {
-                return false;
-            }
-        } else if (!id.equals(other.id)) {
-            return false;
+            return other.id == null;
         }
-        return true;
+        return id.equals(other.id);
     }
 
     @Override

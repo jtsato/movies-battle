@@ -54,12 +54,12 @@ class RegisterGameProviderTest {
         final Game game = registerGameProvider.execute(newGame);
 
         assertThat(game).isNotNull();
-        assertThat(game.getId()).isNotNull();
-        assertThat(game.getPlayer()).isNotNull();
-        assertThat(game.getPlayer()).isEqualTo(player);
-        assertThat(game.getStatus()).isEqualTo(Status.IN_PROGRESS);
-        assertThat(game.getCreatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
-        assertThat(game.getUpdatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.id()).isNotNull();
+        assertThat(game.player()).isNotNull();
+        assertThat(game.player()).isEqualTo(player);
+        assertThat(game.status()).isEqualTo(Status.IN_PROGRESS);
+        assertThat(game.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
 
         assertThat(gameRepository.count()).isEqualTo(2L);
     }

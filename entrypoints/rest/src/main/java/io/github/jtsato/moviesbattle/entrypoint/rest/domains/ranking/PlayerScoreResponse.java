@@ -1,8 +1,5 @@
 package io.github.jtsato.moviesbattle.entrypoint.rest.domains.ranking;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -10,14 +7,12 @@ import java.io.Serializable;
  * @author Jorge Takeshi Sato
  */
 
-@Getter
-@AllArgsConstructor
-public class PlayerScoreResponse implements Serializable {
+public record PlayerScoreResponse(
+        String playerEmail,
+        String playerName,
+        Float score)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 329774416403185866L;
-
-    private final String playerEmail;
-    private final String playerName;
-    private final Float score;
 }

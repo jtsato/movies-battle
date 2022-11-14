@@ -13,24 +13,20 @@ import java.time.LocalDateTime;
  */
 
 @Generated
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class Quiz implements Serializable {
+public record Quiz(
+        Long id,
+        Game game,
+        Bet bet,
+        String optionOneId,
+        String optionOneTitle,
+        String optionOneYear,
+        String optionTwoId,
+        String optionTwoTitle,
+        String optionTwoYear,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8231755197403971745L;
-
-    private final Long id;
-    @Setter private Game game;
-    @Setter private Bet bet;
-    private final String optionOneId;
-    private final String optionOneTitle;
-    private final String optionOneYear;
-    private final String optionTwoId;
-    private final String optionTwoTitle;
-    private final String optionTwoYear;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
 }

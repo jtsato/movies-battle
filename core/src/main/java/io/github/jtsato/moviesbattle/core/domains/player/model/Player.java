@@ -11,18 +11,14 @@ import java.time.LocalDateTime;
  */
 
 @Generated
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class Player implements Serializable {
+public record Player(
+        Long id,
+        String name,
+        String email,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -3375023988104084177L;
-
-    private final Long id;
-    private final String name;
-    private final String email;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
 }

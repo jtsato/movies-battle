@@ -2,11 +2,11 @@ package io.github.jtsato.moviesbattle.exception.handler;
 
 import io.github.jtsato.moviesbattle.entrypoint.rest.common.HttpResponseStatus;
 import io.github.jtsato.moviesbattle.entrypoint.rest.common.WebRequest;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -29,17 +29,16 @@ import java.util.stream.Collectors;
  * @author Jorge Takeshi Sato
  */
 
+@RequiredArgsConstructor
 @Order
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     private static final Logger log = LogManager.getLogger(GlobalExceptionHandler.class);
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
-    @Autowired
-    private WebRequest webRequest;
+    private final WebRequest webRequest;
 
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)

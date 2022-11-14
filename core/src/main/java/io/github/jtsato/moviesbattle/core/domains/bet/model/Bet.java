@@ -11,19 +11,16 @@ import java.time.LocalDateTime;
  * @author Jorge Takeshi Sato
  */
 
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class Bet implements Serializable {
+@Generated
+public record Bet(
+        Long id,
+        Quiz quiz,
+        String optionId,
+        Boolean winTheBet,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 2369191175204185991L;
-
-    private final Long id;
-    @Setter private Quiz quiz;
-    private final String optionId;
-    private final Boolean winTheBet;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
 }

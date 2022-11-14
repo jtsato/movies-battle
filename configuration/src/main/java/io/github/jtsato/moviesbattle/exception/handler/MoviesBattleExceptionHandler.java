@@ -4,7 +4,7 @@ import io.github.jtsato.moviesbattle.core.exception.InvalidActionException;
 import io.github.jtsato.moviesbattle.core.exception.NotFoundException;
 import io.github.jtsato.moviesbattle.entrypoint.rest.common.HttpResponseStatus;
 import io.github.jtsato.moviesbattle.entrypoint.rest.common.WebRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -26,15 +26,14 @@ import java.util.stream.Collectors;
  * @author Jorge Takeshi Sato
  */
 
+@RequiredArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
 public class MoviesBattleExceptionHandler {
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
-    @Autowired
-    private WebRequest webRequest;
+    private final WebRequest webRequest;
 
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)

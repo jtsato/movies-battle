@@ -43,7 +43,7 @@ public class GetGeneralRankingUseCaseImpl implements GetGeneralRankingUseCase {
         final Ranking ranking = new Ranking();
         playersTotalizer.forEach((player, totalizer) -> {
             float score = totalizer.getNumberOfQuizzes() * ((float) totalizer.getNumberOfWins() / (float) totalizer.getNumberOfQuizzes());
-            final PlayerScore playerScore = new PlayerScore(player.getEmail(), player.getName(), score);
+            final PlayerScore playerScore = new PlayerScore(player.email(), player.name(), score);
             ranking.getPlayersScores().add(playerScore);
         });
 
@@ -55,8 +55,8 @@ public class GetGeneralRankingUseCaseImpl implements GetGeneralRankingUseCase {
         final Map<Player, Totalizer> playersTotalizer = new HashMap<>();
 
         bets.forEach(bet -> {
-            final Player player = bet.getQuiz().getGame().getPlayer();
-            int count = bet.getWinTheBet() ? 1 : 0;
+            final Player player = bet.quiz().game().player();
+            int count = bet.winTheBet() ? 1 : 0;
             final Totalizer totalizer = playersTotalizer.get(player);
             if (totalizer == null) {
                 playersTotalizer.put(player, new Totalizer(1, count));

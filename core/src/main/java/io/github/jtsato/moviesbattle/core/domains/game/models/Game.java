@@ -12,18 +12,14 @@ import java.time.LocalDateTime;
  */
 
 @Generated
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class Game implements Serializable {
+public record Game(
+        Long id,
+        Player player,
+        Status status,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -5142356851101054436L;
-
-    private final Long id;
-    private final Player player;
-    private final Status status;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
 }

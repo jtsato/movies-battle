@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public final class PlayerScorePresenter {
 
     public static PlayerScoreResponse of(final PlayerScore playerScore) {
-        return new PlayerScoreResponse(playerScore.getPlayerEmail(),
-                playerScore.getPlayerName(),
-                playerScore.getScore());
+        return new PlayerScoreResponse(playerScore.playerEmail(),
+                playerScore.playerName(),
+                playerScore.score());
     }
 }

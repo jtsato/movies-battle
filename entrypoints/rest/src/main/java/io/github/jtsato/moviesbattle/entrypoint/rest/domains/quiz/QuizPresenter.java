@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 public final class QuizPresenter {
 
     public static QuizResponse of(final Quiz quiz) {
-        return new QuizResponse(quiz.getId(),
-                quiz.getOptionOneId(),
-                quiz.getOptionOneTitle(),
-                quiz.getOptionOneYear(),
-                quiz.getOptionTwoId(),
-                quiz.getOptionTwoTitle(),
-                quiz.getOptionTwoYear(),
-                quiz.getCreatedAt(),
-                quiz.getUpdatedAt());
+        return new QuizResponse(quiz.id(),
+                quiz.optionOneId(),
+                quiz.optionOneTitle(),
+                quiz.optionOneYear(),
+                quiz.optionTwoId(),
+                quiz.optionTwoTitle(),
+                quiz.optionTwoYear(),
+                quiz.createdAt(),
+                quiz.updatedAt());
     }
 }

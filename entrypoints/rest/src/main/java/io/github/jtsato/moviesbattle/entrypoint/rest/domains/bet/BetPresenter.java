@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 public class BetPresenter {
 
     public static BetResponse of(final Bet bet) {
-        return new BetResponse(bet.getId(),
-                bet.getOptionId(),
-                bet.getWinTheBet(),
-                bet.getCreatedAt(),
-                bet.getUpdatedAt());
+        return new BetResponse(bet.id(),
+                bet.optionId(),
+                bet.winTheBet(),
+                bet.createdAt(),
+                bet.updatedAt());
     }
 }

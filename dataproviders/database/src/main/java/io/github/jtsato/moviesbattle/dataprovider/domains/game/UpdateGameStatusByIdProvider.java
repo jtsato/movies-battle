@@ -32,14 +32,14 @@ public class UpdateGameStatusByIdProvider implements UpdateGameStatusByIdGateway
     public Optional<Game> execute(final Game game) {
 
         final EntityGraph entityGraph = EntityGraphUtils.fromAttributePaths("player");
-        final Optional<GameEntity> optional = gameRepository.findById(game.getId(), entityGraph);
+        final Optional<GameEntity> optional = gameRepository.findById(game.id(), entityGraph);
 
         return optional.map(gameEntity -> updateGameEntity(gameEntity, game));
     }
 
     private Game updateGameEntity(final GameEntity gameEntity, final Game game) {
-        gameEntity.setUpdatedAt(game.getUpdatedAt());
-        gameEntity.setStatus(game.getStatus().name());
+        gameEntity.setUpdatedAt(game.updatedAt());
+        gameEntity.setStatus(game.status().name());
         return gameMapper.of(gameRepository.saveAndFlush(gameEntity));
     }
 }

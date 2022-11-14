@@ -20,7 +20,7 @@ public final class RankingPresenter {
                 .getPlayersScores()
                 .stream()
                 .map(PlayerScorePresenter::of)
-                .sorted(Comparator.comparing(PlayerScoreResponse::getScore).reversed())
+                .sorted(Comparator.comparing(PlayerScoreResponse::score).reversed())
                 .collect(Collectors.toList());
         return new RankingResponse(scores);
     }

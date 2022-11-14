@@ -43,7 +43,7 @@ public class EndGameUseCaseTest {
     @Mock
     private final UpdateGameStatusByIdGateway updateGameStatusByIdGateway = Mockito.mock(UpdateGameStatusByIdGateway.class);
     @InjectMocks
-    private EndGameUseCase endGameUseCase = new EndGameUseCaseImpl(getPlayerByEmailGateway, registerPlayerUseCase,
+    private final EndGameUseCase endGameUseCase = new EndGameUseCaseImpl(getPlayerByEmailGateway, registerPlayerUseCase,
             getGameByPlayerIdAndStatusGateway, getUnansweredQuizzesByGateway, getLocalDateTime, updateGameStatusByIdGateway);
 
     @DisplayName("Fail to end a game if there is no game in progress")
@@ -99,18 +99,18 @@ public class EndGameUseCaseTest {
         final Game game = endGameUseCase.execute(command);
 
         assertThat(game).isNotNull();
-        assertThat(game.getId()).isEqualTo(1L);
-        assertThat(game.getStatus()).isEqualTo(Status.OVER);
-        assertThat(game.getCreatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
-        assertThat(game.getUpdatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.id()).isEqualTo(1L);
+        assertThat(game.status()).isEqualTo(Status.OVER);
+        assertThat(game.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
 
-        final Player player = game.getPlayer();
+        final Player player = game.player();
         assertThat(player).isNotNull();
-        assertThat(player.getId()).isEqualTo(1L);
-        assertThat(player.getEmail()).isEqualTo("john.smith.zero@xyz.com");
-        assertThat(player.getName()).isEqualTo("John Smith");
-        assertThat(player.getCreatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
-        assertThat(player.getUpdatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(player.id()).isEqualTo(1L);
+        assertThat(player.email()).isEqualTo("john.smith.zero@xyz.com");
+        assertThat(player.name()).isEqualTo("John Smith");
+        assertThat(player.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(player.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
     }
 
     private static Player buildJohnSmithPlayer() {

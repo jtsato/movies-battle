@@ -10,22 +10,18 @@ import java.io.Serializable;
  */
 
 @Generated
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class Movie implements Serializable {
+public record Movie(
+        Long id,
+        String imdbId,
+        String title,
+        String year,
+        String genre,
+        Float imdbRating,
+        Long imdbVotes,
+        Float score,
+        String posterUrl)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -8366908225523005779L;
-
-    private final Long id;
-    private final String imdbId;
-    private final String title;
-    private final String year;
-    private final String genre;
-    private final Float imdbRating;
-    private final Long imdbVotes;
-    private final Float score;
-    private final String posterUrl;
 }

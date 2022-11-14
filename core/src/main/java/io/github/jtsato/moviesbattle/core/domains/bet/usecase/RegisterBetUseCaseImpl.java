@@ -50,23 +50,23 @@ public class RegisterBetUseCaseImpl implements RegisterBetUseCase {
     public Bet execute(final RegisterBetCommand command) {
 
         final Player player = getPlayerOrRegister(command.getPlayerEmail(), command.getPlayerName());
-        final Game game = getGameInProgressByPlayerId(player.getId());
-        final Optional<Quiz> optional = getUnansweredQuizByGameId(game.getId());
+        final Game game = getGameInProgressByPlayerId(player.id());
+        final Optional<Quiz> optional = getUnansweredQuizByGameId(game.id());
 
         if (optional.isEmpty()){
-            throw new NotFoundException("validation.game.no.quizzes.to.be.answered", game.getId());
+            throw new NotFoundException("validation.game.no.quizzes.to.be.answered", game.id());
         }
 
         final Quiz quiz = optional.get();
 
-        if (StringUtils.equals(quiz.getOptionOneId(), command.getOptionId()) && StringUtils.equals(quiz.getOptionTwoId(), command.getOptionId())){
-            throw new InvalidActionException("validation.bet.invalid.option", command.getOptionId(), quiz.getId());
+        if (StringUtils.equals(quiz.optionOneId(), command.getOptionId()) && StringUtils.equals(quiz.optionTwoId(), command.getOptionId())){
+            throw new InvalidActionException("validation.bet.invalid.option", command.getOptionId(), quiz.id());
         }
 
-        Movie movieOne = getMovieByImdbId(quiz.getOptionOneId());
-        Movie movieTwo = getMovieByImdbId(quiz.getOptionTwoId());
+        Movie movieOne = getMovieByImdbId(quiz.optionOneId());
+        Movie movieTwo = getMovieByImdbId(quiz.optionTwoId());
 
-        final String winner = (movieOne.getScore() >= movieTwo.getScore()) ? movieOne.getImdbId() : movieTwo.getImdbId();
+        final String winner = (movieOne.score() >= movieTwo.score()) ? movieOne.imdbId() : movieTwo.imdbId();
         final boolean winTheBet = StringUtils.equals(winner, command.getOptionId());
         final LocalDateTime createdAt = getLocalDateTime.now();
         final LocalDateTime updatedAt = getLocalDateTime.now();

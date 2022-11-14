@@ -27,7 +27,7 @@ public class RegisterBetProvider implements RegisterBetGateway {
     @Override
     public Bet execute(final Bet bet) {
         final BetEntity betEntity = betMapper.of(bet);
-        quizRepository.findById(bet.getQuiz().getId()).ifPresent(quizEntity -> {
+        quizRepository.findById(bet.quiz().id()).ifPresent(quizEntity -> {
             quizEntity.setBet(betEntity);
             betEntity.setQuiz(quizEntity);
         });

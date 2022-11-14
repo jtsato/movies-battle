@@ -13,18 +13,18 @@ import lombok.NoArgsConstructor;
 public final class GamePresenter {
 
     public static GameResponse of(final Game game) {
-        return new GameResponse(game.getId(),
-                                     of(game.getPlayer()),
-                                        game.getStatus().name(),
-                                        game.getCreatedAt(),
-                                        game.getUpdatedAt());
+        return new GameResponse(game.id(),
+                                     of(game.player()),
+                                        game.status().name(),
+                                        game.createdAt(),
+                                        game.updatedAt());
     }
 
     public static PlayerResponse of(final Player player) {
-        return new PlayerResponse(player.getId(),
-                                  player.getName(),
-                                  player.getEmail(),
-                                  player.getCreatedAt(),
-                                  player.getUpdatedAt());
+        return new PlayerResponse(player.id(),
+                                  player.name(),
+                                  player.email(),
+                                  player.createdAt(),
+                                  player.updatedAt());
     }
 }

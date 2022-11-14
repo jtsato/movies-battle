@@ -36,7 +36,7 @@ public class StartGameUseCaseTest {
     @Mock private final RegisterGameGateway registerGameGateway = Mockito.mock(RegisterGameGateway.class);
 
     @InjectMocks
-    private StartGameUseCase startGameUseCase =
+    private final StartGameUseCase startGameUseCase =
             new StartGameUseCaseImpl(getPlayerByEmailGateway, registerPlayerUseCase,
                     getGameByPlayerIdAndStatusGateway, getLocalDateTime, registerGameGateway);
 
@@ -89,18 +89,18 @@ public class StartGameUseCaseTest {
 
         final Game game = startGameUseCase.execute(command);
         assertThat(game).isNotNull();
-        assertThat(game.getId()).isEqualTo(1L);
-        assertThat(game.getStatus()).isEqualTo(Status.IN_PROGRESS);
-        assertThat(game.getCreatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
-        assertThat(game.getUpdatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.id()).isEqualTo(1L);
+        assertThat(game.status()).isEqualTo(Status.IN_PROGRESS);
+        assertThat(game.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(game.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
 
-        final Player player = game.getPlayer();
+        final Player player = game.player();
         assertThat(player).isNotNull();
-        assertThat(player.getId()).isEqualTo(1L);
-        assertThat(player.getEmail()).isEqualTo("john.smith.zero@xyz.com");
-        assertThat(player.getName()).isEqualTo("John Smith");
-        assertThat(player.getCreatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
-        assertThat(player.getUpdatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(player.id()).isEqualTo(1L);
+        assertThat(player.email()).isEqualTo("john.smith.zero@xyz.com");
+        assertThat(player.name()).isEqualTo("John Smith");
+        assertThat(player.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
+        assertThat(player.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
     }
 
     private static Player buildJohnSmithPlayer() {

@@ -54,16 +54,16 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
     public Quiz execute(final RequestQuizCommand command) {
 
         final Player player = getPlayerOrRegister(command.getPlayerEmail(), command.getPlayerName());
-        final Game game = getGameInProgressByPlayerId(player.getId());
-        final Optional<Quiz> optional = getUnansweredQuizByGameId(game.getId());
+        final Game game = getGameInProgressByPlayerId(player.id());
+        final Optional<Quiz> optional = getUnansweredQuizByGameId(game.id());
 
         if (optional.isPresent()) {
             return optional.get();
         }
 
-        final List<Quiz> quizzes = getAllQuizzesByGameIdGateway.execute(game.getId());
+        final List<Quiz> quizzes = getAllQuizzesByGameIdGateway.execute(game.id());
 
-        checkIfReachedTheLimitOfLosses(game.getId(), quizzes);
+        checkIfReachedTheLimitOfLosses(game.id(), quizzes);
 
         checkIfTheCombinationsIsOver(quizzes);
 
@@ -72,12 +72,12 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
         Movie movieOne = immutablePair.getLeft();
         Movie movieTwo = immutablePair.getRight();
 
-        final String optionOneId = movieOne.getImdbId();
-        final String optionOneTitle = movieOne.getTitle();
-        final String optionOneYear = movieOne.getYear();
-        final String optionTwoId = movieTwo.getImdbId();
-        final String optionTwoTitle = movieTwo.getTitle();
-        final String optionTwoYear = movieTwo.getYear();
+        final String optionOneId = movieOne.imdbId();
+        final String optionOneTitle = movieOne.title();
+        final String optionOneYear = movieOne.year();
+        final String optionTwoId = movieTwo.imdbId();
+        final String optionTwoTitle = movieTwo.title();
+        final String optionTwoYear = movieTwo.year();
         final LocalDateTime createdAt = getLocalDateTime.now();
         final LocalDateTime updatedAt = getLocalDateTime.now();
 
@@ -120,14 +120,14 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
         Movie movieOne = getRandomMovie();
         Movie movieTwo = getRandomMovie();
 
-        while (movieOne.getId().equals(movieTwo.getId())) {
+        while (movieOne.id().equals(movieTwo.id())) {
             movieTwo = getRandomMovie();
         }
 
-        while (isTheQuizRepeated(quizzes, movieOne.getImdbId(), movieTwo.getImdbId())) {
+        while (isTheQuizRepeated(quizzes, movieOne.imdbId(), movieTwo.imdbId())) {
             movieOne = getRandomMovie();
             movieTwo = getRandomMovie();
-            while (movieOne.getId().equals(movieTwo.getId())) {
+            while (movieOne.id().equals(movieTwo.id())) {
                 movieTwo = getRandomMovie();
             }
         }
@@ -137,8 +137,8 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
 
     private static boolean isTheQuizRepeated(final List<Quiz> quizzes, final String movieOneImdbId, final String movieTwoImdbId) {
         return quizzes.stream().anyMatch(quiz ->
-                (quiz.getOptionOneId().equals(movieOneImdbId) && quiz.getOptionTwoId().equals(movieTwoImdbId)) ||
-                (quiz.getOptionOneId().equals(movieTwoImdbId) && quiz.getOptionTwoId().equals(movieOneImdbId))
+                (quiz.optionOneId().equals(movieOneImdbId) && quiz.optionTwoId().equals(movieTwoImdbId)) ||
+                (quiz.optionOneId().equals(movieTwoImdbId) && quiz.optionTwoId().equals(movieOneImdbId))
         );
     }
 
@@ -148,7 +148,7 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
     }
 
     private void checkIfReachedTheLimitOfLosses(final Long gameId, final List<Quiz> quizzes) {
-        final long losses = quizzes.stream().map(Quiz::getBet).filter(bet -> !bet.getWinTheBet()).count();
+        final long losses = quizzes.stream().map(Quiz::bet).filter(bet -> !bet.winTheBet()).count();
         if (losses >= 3) {
             throw new InvalidActionException("validation.game.losses.limit.reached", String.valueOf(gameId));
         }
