@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @ToString
 public class RegisterBetRequest implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -6188513601367036306L;
 
     private String optionId;

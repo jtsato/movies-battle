@@ -1,13 +1,14 @@
 package io.github.jtsato.moviesbattle.core.domains.quiz.usecase;
 
 import io.github.jtsato.moviesbattle.core.common.validation.SelfValidating;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotBlank;
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
 @ToString
 public class RequestQuizCommand extends SelfValidating<RequestQuizCommand> implements Serializable {
 
-    private static final long serialVersionUID = 2442972304512536452L;
+    @Serial private static final long serialVersionUID = 2442972304512536452L;
 
     @NotBlank(message = "validation.player.email.blank")
     private final String playerEmail;

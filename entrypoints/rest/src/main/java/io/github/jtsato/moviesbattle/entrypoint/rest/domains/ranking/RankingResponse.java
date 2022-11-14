@@ -3,6 +3,7 @@ package io.github.jtsato.moviesbattle.entrypoint.rest.domains.ranking;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RankingResponse implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 329774416403185866L;
 
     private final List<PlayerScoreResponse> scores;

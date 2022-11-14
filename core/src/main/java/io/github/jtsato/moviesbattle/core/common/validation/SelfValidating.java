@@ -1,12 +1,7 @@
 package io.github.jtsato.moviesbattle.core.common.validation;
 
+import jakarta.validation.*;
 import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 /**
  * @author Jorge Takeshi Sato

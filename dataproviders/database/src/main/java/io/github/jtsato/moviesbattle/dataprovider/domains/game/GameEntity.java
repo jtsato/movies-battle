@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -26,6 +27,7 @@ import java.time.LocalDateTime;
 })
 public class GameEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -2781124783562798431L;
 
     @Access(AccessType.PROPERTY)

@@ -3,6 +3,7 @@ package io.github.jtsato.moviesbattle.core.domains.bet.model;
 import io.github.jtsato.moviesbattle.core.domains.quiz.model.Quiz;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 public class Bet implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 2369191175204185991L;
 
     private final Long id;

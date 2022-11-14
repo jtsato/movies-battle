@@ -3,6 +3,7 @@ package io.github.jtsato.moviesbattle.entrypoint.rest.domains.bet;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BetResponse implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1698092149790294590L;
 
     private final Long id;

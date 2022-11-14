@@ -2,12 +2,15 @@ package io.github.jtsato.moviesbattle.core.exception;
 
 import lombok.Getter;
 
+import java.io.Serial;
+
 /**
  * @author Jorge Takeshi Sato
  */
 
 public class CoreException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = 2361423857513221244L;
 
     @Getter

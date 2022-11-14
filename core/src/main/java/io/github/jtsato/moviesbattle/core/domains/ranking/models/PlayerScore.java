@@ -2,6 +2,7 @@ package io.github.jtsato.moviesbattle.core.domains.ranking.models;
 
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @ToString
 public class PlayerScore implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 8231755197403971745L;
 
     private final String playerEmail;

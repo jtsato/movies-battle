@@ -23,7 +23,7 @@ public class RegisterGameProvider implements RegisterGameGateway {
     @Override
     public Game execute(final Game game) {
         final GameEntity gameEntityToPersist = gameMapper.of(game);
-        final GameEntity gameEntity = gameRepository.saveAndFlush(gameEntityToPersist);
+        final GameEntity gameEntity = gameRepository.save(gameEntityToPersist);
         return gameMapper.of(gameEntity);
     }
 }

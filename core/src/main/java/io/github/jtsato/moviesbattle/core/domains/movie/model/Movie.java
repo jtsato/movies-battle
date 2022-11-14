@@ -2,6 +2,7 @@ package io.github.jtsato.moviesbattle.core.domains.movie.model;
 
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @ToString
 public class Movie implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -8366908225523005779L;
 
     private final Long id;

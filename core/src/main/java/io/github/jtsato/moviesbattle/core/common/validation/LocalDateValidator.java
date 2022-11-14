@@ -1,10 +1,10 @@
 package io.github.jtsato.moviesbattle.core.common.validation;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Jorge Takeshi Sato

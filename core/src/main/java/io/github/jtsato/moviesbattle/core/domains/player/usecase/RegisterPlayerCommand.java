@@ -1,13 +1,14 @@
 package io.github.jtsato.moviesbattle.core.domains.player.usecase;
 
 import io.github.jtsato.moviesbattle.core.common.validation.SelfValidating;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotBlank;
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -20,6 +21,7 @@ import java.io.Serializable;
 @ToString
 public class RegisterPlayerCommand extends SelfValidating<RegisterPlayerCommand> implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -839218396070000776L;
 
     @NotBlank(message = "validation.player.name.blank")

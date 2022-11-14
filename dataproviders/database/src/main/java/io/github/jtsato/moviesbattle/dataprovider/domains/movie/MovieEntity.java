@@ -3,6 +3,7 @@ package io.github.jtsato.moviesbattle.dataprovider.domains.movie;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -17,12 +18,13 @@ import java.io.Serializable;
 @Table(name = "MOVIES",
        indexes = {
             @Index(columnList = "TITLE", name = "IDX_MOVIES_TITLE"),
-            @Index(columnList = "YEAR", name = "IDX_MOVIES_YEAR"),
+            @Index(columnList = "YEAR_", name = "IDX_MOVIES_YEAR"),
             @Index(columnList = "GENRE", name = "IDX_MOVIES_GENRE"),
        }
 )
 public class MovieEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -2997286413501054881L;
     
     @Access(AccessType.PROPERTY)
@@ -37,7 +39,7 @@ public class MovieEntity implements Serializable {
     @Column(name = "TITLE", nullable = false)
     private String title;
 
-    @Column(name = "YEAR", nullable = false)
+    @Column(name = "YEAR_", nullable = false)
     private String year;
 
     @Column(name = "GENRE", nullable = false)

@@ -3,6 +3,7 @@ package io.github.jtsato.moviesbattle.core.domains.game.models;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @ToString
 public class Game implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -5142356851101054436L;
 
     private final Long id;
