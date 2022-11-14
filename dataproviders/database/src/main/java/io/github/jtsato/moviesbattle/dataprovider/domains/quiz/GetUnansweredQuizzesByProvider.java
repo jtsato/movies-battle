@@ -22,7 +22,7 @@ public class GetUnansweredQuizzesByProvider implements GetUnansweredQuizzesByGat
 
     private final QuizMapper quizMapper = Mappers.getMapper(QuizMapper.class);
 
-    QuizRepository quizRepository;
+    private final QuizRepository quizRepository;
 
     @Override
     public Optional<Quiz> execute(final Long gameId) {
