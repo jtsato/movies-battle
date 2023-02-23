@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.usecases.start.RegisterGameGateway;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.usecase.start.RegisterGameGateway;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;

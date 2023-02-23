@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

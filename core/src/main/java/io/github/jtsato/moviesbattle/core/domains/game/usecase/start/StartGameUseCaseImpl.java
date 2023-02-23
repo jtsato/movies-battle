@@ -1,9 +1,9 @@
-package io.github.jtsato.moviesbattle.core.domains.game.usecases.start;
+package io.github.jtsato.moviesbattle.core.domains.game.usecase.start;
 
 import io.github.jtsato.moviesbattle.core.common.GetLocalDateTime;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetGameByPlayerIdAndStatusGateway;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import io.github.jtsato.moviesbattle.core.domains.player.xcutting.GetPlayerByEmailGateway;
 import io.github.jtsato.moviesbattle.core.domains.player.usecase.RegisterPlayerUseCase;

@@ -1,6 +1,6 @@
-package io.github.jtsato.moviesbattle.core.domains.game.usecases.end;
+package io.github.jtsato.moviesbattle.core.domains.game.usecase.end;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 
 /**
  * @author Jorge Takeshi Sato

@@ -1,4 +1,4 @@
-package io.github.jtsato.moviesbattle.core.domains.game.usecases.end;
+package io.github.jtsato.moviesbattle.core.domains.game.usecase.start;
 
 import io.github.jtsato.moviesbattle.core.common.validation.SelfValidating;
 import jakarta.validation.constraints.NotBlank;
@@ -19,10 +19,10 @@ import java.io.Serializable;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class EndGameCommand extends SelfValidating<EndGameCommand> implements Serializable {
+public class StartGameCommand extends SelfValidating<StartGameCommand> implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -6754437157027756468L;
+    private static final long serialVersionUID = -3480489082836991592L;
 
     @NotBlank(message = "validation.player.email.blank")
     private final String playerEmail;
@@ -30,7 +30,7 @@ public class EndGameCommand extends SelfValidating<EndGameCommand> implements Se
     @NotBlank(message = "validation.player.name.blank")
     private final String playerName;
 
-    public EndGameCommand(final String playerEmail, final String playerName) {
+    public StartGameCommand(final String playerEmail, final String playerName) {
         this.playerEmail = playerEmail;
         this.playerName = playerName;
         this.validateSelf();

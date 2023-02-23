@@ -247,10 +247,10 @@
                     <siteReportDescription>MoviesBattle database mutation report</siteReportDescription>
                     <siteReportDirectory>moviesbattle-database</siteReportDirectory>
                     <targetClasses>
-                        <param>io.github.jtsato.moviesbattle.dataprovider.*.*DataProvider</param>
+                        <param>io.github.jtsato.moviesbattle.dataprovider.*.*Provider</param>
                     </targetClasses>
                     <targetTests>
-                        <param>io.github.jtsato.moviesbattle.dataprovider.*.*DataProviderTest</param>
+                        <param>io.github.jtsato.moviesbattle.dataprovider.*.*ProviderTest</param>
                     </targetTests>
                 </configuration>
                 <dependencies>

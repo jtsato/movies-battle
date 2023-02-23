@@ -1,6 +1,6 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 import io.github.jtsato.moviesbattle.dataprovider.domains.player.PlayerMapper;
 import org.mapstruct.Mapper;
 

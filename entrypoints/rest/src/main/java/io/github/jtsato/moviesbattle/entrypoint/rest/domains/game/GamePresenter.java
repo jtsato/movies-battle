@@ -1,6 +1,6 @@
 package io.github.jtsato.moviesbattle.entrypoint.rest.domains.game;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

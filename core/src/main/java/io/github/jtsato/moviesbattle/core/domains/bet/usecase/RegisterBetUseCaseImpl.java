@@ -2,8 +2,8 @@ package io.github.jtsato.moviesbattle.core.domains.bet.usecase;
 
 import io.github.jtsato.moviesbattle.core.common.GetLocalDateTime;
 import io.github.jtsato.moviesbattle.core.domains.bet.model.Bet;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetGameByPlayerIdAndStatusGateway;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetUnansweredQuizzesByGateway;
 import io.github.jtsato.moviesbattle.core.domains.movie.model.Movie;

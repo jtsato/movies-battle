@@ -1,4 +1,4 @@
-package io.github.jtsato.moviesbattle.core.domains.game.usecases.end;
+package io.github.jtsato.moviesbattle.core.domains.game.usecase.start;
 
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Assertions;
@@ -11,16 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Jorge Takeshi Sato
  */
 
-@DisplayName("End Game Command Test")
-public class EndGameCommandTest {
+@DisplayName("Start Game Command Test")
+public class StartGameCommandTest {
 
-    @DisplayName("Fail to create EndGameCommand with empty email")
+    @DisplayName("Fail to create StartGameCommand with empty email")
     @Test
-    void failToCreateEndGameCommandWithEmptyEmail() {
+    void failToCreateStartGameCommandWithEmptyEmail() {
 
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
-                        () -> new EndGameCommand(null, "playerName"));
+                        () -> new StartGameCommand(null, "playerName"));
 
         assertThat(exception).isInstanceOf(ConstraintViolationException.class);
 
@@ -29,13 +29,13 @@ public class EndGameCommandTest {
         assertThat(constraintViolationException.getMessage()).contains("playerEmail: validation.player.email.blank");
     }
 
-    @DisplayName("Fail to create EndGameCommand with empty name")
+    @DisplayName("Fail to create StartGameCommand with empty name")
     @Test
-    void failToCreateEndGameCommandWithEmptyName() {
+    void failToCreateStartGameCommandWithEmptyName() {
 
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
-                        () -> new EndGameCommand("playerEmail", null));
+                        () -> new StartGameCommand("playerEmail", null));
 
         assertThat(exception).isInstanceOf(ConstraintViolationException.class);
 

@@ -2,8 +2,8 @@ package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
 import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphUtils;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.usecases.end.UpdateGameStatusByIdGateway;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.usecase.end.UpdateGameStatusByIdGateway;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;

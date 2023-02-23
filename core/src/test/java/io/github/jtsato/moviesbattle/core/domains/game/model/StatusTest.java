@@ -1,4 +1,4 @@
-package io.github.jtsato.moviesbattle.core.domains.game.models;
+package io.github.jtsato.moviesbattle.core.domains.game.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

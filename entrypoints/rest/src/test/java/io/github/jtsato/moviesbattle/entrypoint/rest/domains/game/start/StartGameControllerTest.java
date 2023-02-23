@@ -1,9 +1,9 @@
 package io.github.jtsato.moviesbattle.entrypoint.rest.domains.game.start;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
-import io.github.jtsato.moviesbattle.core.domains.game.usecases.start.StartGameCommand;
-import io.github.jtsato.moviesbattle.core.domains.game.usecases.start.StartGameUseCase;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.usecase.start.StartGameCommand;
+import io.github.jtsato.moviesbattle.core.domains.game.usecase.start.StartGameUseCase;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import io.github.jtsato.moviesbattle.entrypoint.rest.common.WebRequest;
 import org.junit.jupiter.api.DisplayName;

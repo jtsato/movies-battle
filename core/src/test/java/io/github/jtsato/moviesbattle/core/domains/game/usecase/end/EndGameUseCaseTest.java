@@ -1,14 +1,15 @@
-package io.github.jtsato.moviesbattle.core.domains.game.usecases.start;
+package io.github.jtsato.moviesbattle.core.domains.game.usecase.end;
 
 import io.github.jtsato.moviesbattle.core.common.GetLocalDateTime;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetGameByPlayerIdAndStatusGateway;
+import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetUnansweredQuizzesByGateway;
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import io.github.jtsato.moviesbattle.core.domains.player.usecase.RegisterPlayerCommand;
 import io.github.jtsato.moviesbattle.core.domains.player.usecase.RegisterPlayerUseCase;
 import io.github.jtsato.moviesbattle.core.domains.player.xcutting.GetPlayerByEmailGateway;
-import io.github.jtsato.moviesbattle.core.exception.InvalidActionException;
+import io.github.jtsato.moviesbattle.core.exception.NotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,23 +27,28 @@ import static org.mockito.Mockito.when;
  * @author Jorge Takeshi Sato
  */
 
-@DisplayName("Start Game Use Case Test")
-public class StartGameUseCaseTest {
+@DisplayName("End Game Use Case Test")
+public class EndGameUseCaseTest {
 
-    @Mock private final GetPlayerByEmailGateway getPlayerByEmailGateway = Mockito.mock(GetPlayerByEmailGateway.class);
-    @Mock private final RegisterPlayerUseCase registerPlayerUseCase = Mockito.mock(RegisterPlayerUseCase.class);
-    @Mock private final GetGameByPlayerIdAndStatusGateway getGameByPlayerIdAndStatusGateway = Mockito.mock(GetGameByPlayerIdAndStatusGateway.class);
-    @Mock private final GetLocalDateTime getLocalDateTime = Mockito.mock(GetLocalDateTime.class);
-    @Mock private final RegisterGameGateway registerGameGateway = Mockito.mock(RegisterGameGateway.class);
-
+    @Mock
+    private final GetPlayerByEmailGateway getPlayerByEmailGateway = Mockito.mock(GetPlayerByEmailGateway.class);
+    @Mock
+    private final RegisterPlayerUseCase registerPlayerUseCase = Mockito.mock(RegisterPlayerUseCase.class);
+    @Mock
+    private final GetGameByPlayerIdAndStatusGateway getGameByPlayerIdAndStatusGateway = Mockito.mock(GetGameByPlayerIdAndStatusGateway.class);
+    @Mock
+    private final GetUnansweredQuizzesByGateway getUnansweredQuizzesByGateway = Mockito.mock(GetUnansweredQuizzesByGateway.class);
+    @Mock
+    private final GetLocalDateTime getLocalDateTime = Mockito.mock(GetLocalDateTime.class);
+    @Mock
+    private final UpdateGameStatusByIdGateway updateGameStatusByIdGateway = Mockito.mock(UpdateGameStatusByIdGateway.class);
     @InjectMocks
-    private final StartGameUseCase startGameUseCase =
-            new StartGameUseCaseImpl(getPlayerByEmailGateway, registerPlayerUseCase,
-                    getGameByPlayerIdAndStatusGateway, getLocalDateTime, registerGameGateway);
+    private final EndGameUseCase endGameUseCase = new EndGameUseCaseImpl(getPlayerByEmailGateway, registerPlayerUseCase,
+            getGameByPlayerIdAndStatusGateway, getUnansweredQuizzesByGateway, getLocalDateTime, updateGameStatusByIdGateway);
 
-    @DisplayName("Fail to start a new game if there is a game in progress")
+    @DisplayName("Fail to end a game if there is no game in progress")
     @Test
-    void failToStartANewGameIfThereIsAGameInProgress() {
+    void failToEndANewGameIfThereIsAGameInProgress() {
 
         when(getPlayerByEmailGateway.execute("john.smith.zero@xyz.com"))
                 .thenReturn(Optional.empty());
@@ -51,24 +57,24 @@ public class StartGameUseCaseTest {
                 .thenReturn(buildJohnSmithPlayer());
 
         when(getGameByPlayerIdAndStatusGateway.execute(1L, Status.IN_PROGRESS))
-                .thenReturn(Optional.of(buildRegisteredGame()));
+                .thenReturn(Optional.empty());
 
-        final StartGameCommand command = new StartGameCommand("john.smith.zero@xyz.com", "John Smith");
+        final EndGameCommand command = new EndGameCommand("john.smith.zero@xyz.com", "John Smith");
 
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
-                        () -> startGameUseCase.execute(command));
+                        () -> endGameUseCase.execute(command));
 
-        assertThat(exception).isInstanceOf(InvalidActionException.class);
+        assertThat(exception).isInstanceOf(NotFoundException.class);
 
-        final InvalidActionException invalidActionException = (InvalidActionException) exception;
-        assertThat(invalidActionException.getArgs()).contains(String.valueOf(1L));
-        assertThat(invalidActionException.getMessage()).isEqualTo("validation.game.already.in.progress");
+        final NotFoundException notFoundException = (NotFoundException) exception;
+        assertThat(notFoundException.getArgs()).contains(String.valueOf(1L));
+        assertThat(notFoundException.getMessage()).isEqualTo("validation.game.in.progress.notfound");
     }
 
-    @DisplayName("Successfully to start a new game if there is a game in progress")
+    @DisplayName("Successfully to end a game if there is a game in progress")
     @Test
-    void successfullyToStartANewGameIfThereIsAGameInProgress() {
+    void successfullyToEndANewGameIfThereIsAGameInProgress() {
 
         when(getPlayerByEmailGateway.execute("john.smith.zero@xyz.com"))
                 .thenReturn(Optional.empty());
@@ -77,20 +83,24 @@ public class StartGameUseCaseTest {
                 .thenReturn(buildJohnSmithPlayer());
 
         when(getGameByPlayerIdAndStatusGateway.execute(1L, Status.IN_PROGRESS))
+                .thenReturn(Optional.of(buildGameInProgress()));
+
+        when(getUnansweredQuizzesByGateway.execute(1L))
                 .thenReturn(Optional.empty());
 
         when(getLocalDateTime.now())
                 .thenReturn(LocalDateTime.parse("2020-03-12T22:04:59.123"));
 
-        when(registerGameGateway.execute(buildGameToBeRegistered()))
-                .thenReturn(buildRegisteredGame());
+        when(updateGameStatusByIdGateway.execute(buildGameOverToBeUpdated()))
+                .thenReturn(Optional.of(buildGameOverUpdated()));
 
-        final StartGameCommand command = new StartGameCommand("john.smith.zero@xyz.com", "John Smith");
+        final EndGameCommand command = new EndGameCommand("john.smith.zero@xyz.com", "John Smith");
 
-        final Game game = startGameUseCase.execute(command);
+        final Game game = endGameUseCase.execute(command);
+
         assertThat(game).isNotNull();
         assertThat(game.id()).isEqualTo(1L);
-        assertThat(game.status()).isEqualTo(Status.IN_PROGRESS);
+        assertThat(game.status()).isEqualTo(Status.OVER);
         assertThat(game.createdAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
         assertThat(game.updatedAt()).isEqualTo(LocalDateTime.parse("2020-03-12T22:04:59.123"));
 
@@ -109,15 +119,21 @@ public class StartGameUseCaseTest {
                 LocalDateTime.parse("2020-03-12T22:04:59.123"));
     }
 
-    private static Game buildGameToBeRegistered() {
-        return new Game(null, buildJohnSmithPlayer(), Status.IN_PROGRESS,
+    private static Game buildGameInProgress() {
+        return new Game(1L, buildJohnSmithPlayer(), Status.IN_PROGRESS,
                 LocalDateTime.parse("2020-03-12T22:04:59.123"),
                 LocalDateTime.parse("2020-03-12T22:04:59.123")
         );
     }
 
-    private static Game buildRegisteredGame() {
-        return new Game(1L, buildJohnSmithPlayer(), Status.IN_PROGRESS,
+    private static Game buildGameOverToBeUpdated() {
+        return new Game(1L, buildJohnSmithPlayer(), Status.OVER,
+                null, LocalDateTime.parse("2020-03-12T22:04:59.123")
+        );
+    }
+
+    private static Game buildGameOverUpdated() {
+        return new Game(1L, buildJohnSmithPlayer(), Status.OVER,
                 LocalDateTime.parse("2020-03-12T22:04:59.123"),
                 LocalDateTime.parse("2020-03-12T22:04:59.123")
         );

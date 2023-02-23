@@ -233,10 +233,10 @@
                     <siteReportDescription>MoviesBattle rest mutation report</siteReportDescription>
                     <siteReportDirectory>moviesbattle-rest</siteReportDirectory>
                     <targetClasses>
-                        <param>io.github.jtsato.moviesbattle.entrypoint.rest.*.controller.*Controller</param>
+                        <param>io.github.jtsato.moviesbattle.entrypoint.rest.*.*Controller</param>
                     </targetClasses>
                     <targetTests>
-                        <param>io.github.jtsato.moviesbattle.entrypoint.rest.*.controller.*ControllerTest</param>
+                        <param>io.github.jtsato.moviesbattle.entrypoint.rest.*.*ControllerTest</param>
                     </targetTests>
                 </configuration>
                 <dependencies>

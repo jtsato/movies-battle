@@ -173,7 +173,7 @@
                     <siteReportDescription>MoviesBattle core mutation report</siteReportDescription>
                     <siteReportDirectory>moviesbattle-core</siteReportDirectory>
                     <targetClasses>
-                        <param>io.github.jtsato.moviesbattle.core.*.usecase.impl.*UseCaseImpl</param>
+                        <param>io.github.jtsato.moviesbattle.core.*.usecase.*UseCaseImpl</param>
                     </targetClasses>
                     <targetTests>
                         <param>io.github.jtsato.moviesbattle.core.*.usecase.*UseCaseTest</param>

@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.core.domains.game.xcutting;
 
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Status;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 
 import java.util.Optional;
 

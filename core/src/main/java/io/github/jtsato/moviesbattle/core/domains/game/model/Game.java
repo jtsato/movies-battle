@@ -1,4 +1,4 @@
-package io.github.jtsato.moviesbattle.core.domains.game.models;
+package io.github.jtsato.moviesbattle.core.domains.game.model;
 
 import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import lombok.*;

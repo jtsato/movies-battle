@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.core.domains.quiz.model;
 
 import io.github.jtsato.moviesbattle.core.domains.bet.model.Bet;
-import io.github.jtsato.moviesbattle.core.domains.game.models.Game;
+import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 import lombok.*;
 
 import java.io.Serial;
