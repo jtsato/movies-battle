@@ -2,7 +2,7 @@ package io.github.jtsato.moviesbattle.core.common;
 
 import java.time.LocalDate;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 /**
  * @author Jorge Takeshi Sato

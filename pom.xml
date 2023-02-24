@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version>
+        <version>3.0.3</version>
         <relativePath />
     </parent>
 
@@ -25,9 +25,9 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
+        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
         <pitest-maven.version>1.9.10</pitest-maven.version>
-        <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+        <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
     </properties>
 
     <modules>

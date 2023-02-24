@@ -2,7 +2,7 @@ package io.github.jtsato.moviesbattle.dataprovider.domains.movie;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 

@@ -5,7 +5,7 @@ import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.time.LocalDateTime;
 
 /*

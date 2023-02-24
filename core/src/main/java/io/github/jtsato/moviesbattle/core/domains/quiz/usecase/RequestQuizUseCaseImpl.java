@@ -18,7 +18,7 @@ import io.github.jtsato.moviesbattle.core.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;

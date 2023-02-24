@@ -20,7 +20,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface LocalDateConstraint {
 
-    String message() default "{javax.validation.constraints.LocalDate.message}";
+    String message() default "{jakarta.validation.constraints.LocalDate.message}";
 
     Class<?>[] groups() default {};
 

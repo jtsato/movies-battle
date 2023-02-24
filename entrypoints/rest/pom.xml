@@ -24,16 +24,15 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <commons.io.version>2.11.0</commons.io.version>
-        <springdoc.version>1.6.12</springdoc.version>
+        <springdoc.version>2.0.2</springdoc.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-        <javax.validation-api.version> 2.0.1.Final</javax.validation-api.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <glassfish.expressly.version>5.0.0</glassfish.expressly.version>
         <jacoco.agent.version>0.8.8</jacoco.agent.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <pitest-maven.version>1.9.10</pitest-maven.version>
-        <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+        <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
         <sonar.coverage.exclusions>
             **/src/**/core/**,
             **/src/**/MoviesBattleRestApplication.java
@@ -80,27 +79,21 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>${jakarta.validation-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
-            <scope>compile</scope>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-data-rest</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-security</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-common</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>

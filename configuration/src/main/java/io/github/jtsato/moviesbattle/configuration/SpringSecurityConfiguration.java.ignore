@@ -3,35 +3,35 @@ package io.github.jtsato.moviesbattle.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+import com.okta.spring.boot.oauth.Okta;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * @author Jorge Takeshi Sato
  */
 
-@Profile({"test", "dev"})
-@EnableWebSecurity
+@Profile({"uat", "prod"})
 @Configuration
-public class ByPassSecurityConfiguration  {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SpringSecurityConfiguration  {
 
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity httpSecurity)
         throws Exception {
         httpSecurity
-                .csrf()
-                .disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/**")
-                .permitAll()
                 .anyRequest()
-                .anonymous();
+                .authenticated()
+                .and()
+                .oauth2ResourceServer()
+                .jwt();
 
+        Okta.configureResourceServer401ResponseBody(httpSecurity);
+        httpSecurity.headers().frameOptions().sameOrigin();
         return httpSecurity.build();
     }
 

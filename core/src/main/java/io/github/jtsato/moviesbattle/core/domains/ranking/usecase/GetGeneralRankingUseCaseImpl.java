@@ -9,7 +9,7 @@ import io.github.jtsato.moviesbattle.core.domains.ranking.models.PlayerScore;
 import io.github.jtsato.moviesbattle.core.domains.ranking.models.Ranking;
 import lombok.*;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

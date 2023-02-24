@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.jtsato</groupId>
@@ -20,28 +17,26 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-        <javax.inject.version>1</javax.inject.version>
-        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-        <javax.validation-api.version> 2.0.1.Final</javax.validation-api.version>
+        <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <glassfish.expressly.version>5.0.0</glassfish.expressly.version>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.26</lombok.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-collections.version>3.2.2</commons-collections.version>
-        <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
-        <assertj-core.version>3.23.1</assertj-core.version>
-        <mockito-junit-jupiter.version>4.8.1</mockito-junit-jupiter.version>
+        <commons-collections.version>20040616</commons-collections.version>
+        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
+        <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
         <pitest-maven.version>1.9.10</pitest-maven.version>
-        <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+        <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
         <jacoco.agent.version>0.8.8</jacoco.agent.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>${javax.inject.version}</version>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>${jakarta.inject.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -57,16 +52,6 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-cdi</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.validation-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -187,7 +172,20 @@
                     </dependency>
                 </dependencies>
             </plugin>
-        </plugins>
+        <plugin>
+          <groupId>com.appland</groupId>
+          <artifactId>appmap-maven-plugin</artifactId>
+          <version>1.2.0</version>
+          <executions>
+              <execution>
+                  <phase>process-test-classes</phase>
+                  <goals>
+                      <goal>prepare-agent</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+</plugins>
     </build>
 
 </project>

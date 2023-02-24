@@ -1,7 +1,7 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.quiz;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphUtils;
+import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.EntityGraph;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetUnansweredQuizzesByGateway;
 import io.github.jtsato.moviesbattle.core.domains.quiz.model.Quiz;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class GetUnansweredQuizzesByProvider implements GetUnansweredQuizzesByGat
 
     @Override
     public Optional<Quiz> execute(final Long gameId) {
-        final EntityGraph entityGraph = EntityGraphUtils.fromAttributePaths("game");
+        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("game").build();
         Optional<QuizEntity> quizEntity = quizRepository.findByGameIdAndBetIsNull(gameId, entityGraph);
         return quizEntity.map(quizMapper::of);
     }

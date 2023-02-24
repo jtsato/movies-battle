@@ -1,7 +1,8 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.quiz;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphUtils;
+import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.EntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.NamedEntityGraph;
 import io.github.jtsato.moviesbattle.core.domains.quiz.model.Quiz;
 import io.github.jtsato.moviesbattle.core.domains.quiz.usecase.GetAllQuizzesByGameIdGateway;
 import io.github.jtsato.moviesbattle.dataprovider.common.ListMapper;
@@ -28,7 +29,7 @@ public class GetAllQuizzesByGameIdProvider implements GetAllQuizzesByGameIdGatew
 
     @Override
     public List<Quiz> execute(Long gameId) {
-        final EntityGraph entityGraph = EntityGraphUtils.fromAttributePaths("game", "bet");
+        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("game","bet").build();
         final List<QuizEntity> quizEntities = quizRepository.findByGameId(gameId, entityGraph);
         return listMapper.of(quizEntities, quizMapper::of);
     }

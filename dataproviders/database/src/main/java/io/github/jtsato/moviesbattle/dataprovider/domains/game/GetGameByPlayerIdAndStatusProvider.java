@@ -1,7 +1,8 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphUtils;
+import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.EntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.NamedEntityGraph;
 import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 import io.github.jtsato.moviesbattle.core.domains.game.model.Status;
 import io.github.jtsato.moviesbattle.core.domains.game.xcutting.GetGameByPlayerIdAndStatusGateway;
@@ -27,7 +28,7 @@ public class GetGameByPlayerIdAndStatusProvider implements GetGameByPlayerIdAndS
 
     @Override
     public Optional<Game> execute(Long playerId, Status status) {
-        final EntityGraph entityGraph = EntityGraphUtils.fromAttributePaths("player");
+        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("player").build();
         final Optional<GameEntity> optional = gameRepository.findByStatusIgnoreCaseAndPlayerId(status.name(), playerId, entityGraph);
         return optional.map(gameMapper::of);
     }

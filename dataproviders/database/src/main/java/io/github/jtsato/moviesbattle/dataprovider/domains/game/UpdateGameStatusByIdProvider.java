@@ -1,7 +1,8 @@
 package io.github.jtsato.moviesbattle.dataprovider.domains.game;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphUtils;
+import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.EntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain2.NamedEntityGraph;
 import io.github.jtsato.moviesbattle.core.domains.game.model.Game;
 import io.github.jtsato.moviesbattle.core.domains.game.usecase.end.UpdateGameStatusByIdGateway;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class UpdateGameStatusByIdProvider implements UpdateGameStatusByIdGateway
     @Override
     public Optional<Game> execute(final Game game) {
 
-        final EntityGraph entityGraph = EntityGraphUtils.fromAttributePaths("player");
+        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("player").build();
         final Optional<GameEntity> optional = gameRepository.findById(game.id(), entityGraph);
 
         return optional.map(gameEntity -> updateGameEntity(gameEntity, game));

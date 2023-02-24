@@ -13,7 +13,7 @@ import io.github.jtsato.moviesbattle.core.exception.InvalidActionException;
 import io.github.jtsato.moviesbattle.core.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
