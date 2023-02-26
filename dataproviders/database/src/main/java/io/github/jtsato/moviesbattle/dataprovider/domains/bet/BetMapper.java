@@ -17,10 +17,9 @@ public interface BetMapper {
     Bet of(final BetEntity betEntity);
     BetEntity of(final Bet bet);
 
-    @Mappings({@Mapping(target = "bet", ignore = true)})
+    @Mapping(target = "bet", ignore = true)
     QuizEntity of(Quiz quiz);
 
-    @Mappings({@Mapping(target = "bet", ignore = true)})
+    @Mapping(target = "bet", ignore = true)
     Quiz of(QuizEntity quiz);
 }
-

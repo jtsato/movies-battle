@@ -33,8 +33,17 @@ public class SwaggerConfiguration {
 
         final String securitySchemeName = "Token";
 
-        final SecurityScheme securityScheme = new SecurityScheme().name(securitySchemeName).type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT");
-        final Components components = new Components().addSecuritySchemes(securitySchemeName, securityScheme);
-        return new OpenAPI().addSecurityItem(new SecurityRequirement().addList(securitySchemeName)).components(components).info(info);
+        final SecurityScheme securityScheme = new SecurityScheme()
+                .name(securitySchemeName)
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT");
+
+        final Components components = new Components()
+                .addSecuritySchemes(securitySchemeName, securityScheme);
+
+        return new OpenAPI()
+                .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
+                .components(components).info(info);
     }
 }

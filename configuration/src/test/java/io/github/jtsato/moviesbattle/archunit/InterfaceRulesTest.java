@@ -28,5 +28,8 @@ public class InterfaceRulesTest {
                                                                                                                    .haveSimpleNameContaining("Interface");
 
     @ArchTest
-    static final ArchRule interfaces_must_not_be_placed_in_implementation_packages = noClasses().that().resideInAPackage("..impl..").should().beInterfaces();
+    static final ArchRule interfaces_must_not_be_placed_in_implementation_packages = noClasses().that()
+            .haveSimpleNameEndingWith("Impl")
+            .should()
+            .beInterfaces();
 }

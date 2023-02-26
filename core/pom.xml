@@ -172,20 +172,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-        <plugin>
-          <groupId>com.appland</groupId>
-          <artifactId>appmap-maven-plugin</artifactId>
-          <version>1.2.0</version>
-          <executions>
-              <execution>
-                  <phase>process-test-classes</phase>
-                  <goals>
-                      <goal>prepare-agent</goal>
-                  </goals>
-              </execution>
-          </executions>
-      </plugin>
-</plugins>
+        </plugins>
     </build>
-
 </project>
