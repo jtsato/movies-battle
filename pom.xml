@@ -34,7 +34,7 @@
         <module>configuration</module>
         <module>/entrypoints/rest</module>
         <module>core</module>
-        <module>/dataproviders/database</module>
+        <module>/infra/database</module>
     </modules>
 
     <dependencies>
