@@ -32,6 +32,11 @@ public class ByPassSecurityConfiguration  {
                 .anyRequest()
                 .anonymous();
 
+        httpSecurity
+                .headers()
+                .frameOptions()
+                .sameOrigin();
+
         return httpSecurity.build();
     }
 

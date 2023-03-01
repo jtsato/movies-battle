@@ -73,4 +73,9 @@ nb-configuration.xml
 ## VSCode
 ##############################
 .vscode/
-configuration/archunit_store/
+
+##############################
+## Misc
+##############################
+archunit_store/
+spy.log

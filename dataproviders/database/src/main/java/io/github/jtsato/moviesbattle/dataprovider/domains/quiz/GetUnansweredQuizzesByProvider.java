@@ -28,6 +28,7 @@ public class GetUnansweredQuizzesByProvider implements GetUnansweredQuizzesByGat
     public Optional<Quiz> execute(final Long gameId) {
         final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("game").build();
         Optional<QuizEntity> quizEntity = quizRepository.findByGameIdAndBetIsNull(gameId, entityGraph);
+
         return quizEntity.map(quizMapper::of);
     }
 }

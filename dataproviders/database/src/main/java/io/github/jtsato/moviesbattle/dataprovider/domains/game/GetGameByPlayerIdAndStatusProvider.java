@@ -30,6 +30,7 @@ public class GetGameByPlayerIdAndStatusProvider implements GetGameByPlayerIdAndS
     public Optional<Game> execute(Long playerId, Status status) {
         final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("player").build();
         final Optional<GameEntity> optional = gameRepository.findByStatusIgnoreCaseAndPlayerId(status.name(), playerId, entityGraph);
+
         return optional.map(gameMapper::of);
     }
 }

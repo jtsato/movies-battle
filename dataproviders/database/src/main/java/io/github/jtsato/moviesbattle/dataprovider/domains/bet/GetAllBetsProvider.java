@@ -2,7 +2,6 @@ package io.github.jtsato.moviesbattle.dataprovider.domains.bet;
 
 import com.cosium.spring.data.jpa.entity.graph.domain2.DynamicEntityGraph;
 import com.cosium.spring.data.jpa.entity.graph.domain2.EntityGraph;
-import com.cosium.spring.data.jpa.entity.graph.domain2.NamedEntityGraph;
 import io.github.jtsato.moviesbattle.core.domains.bet.model.Bet;
 import io.github.jtsato.moviesbattle.core.domains.bet.xcutting.GetAllBetsGateway;
 import io.github.jtsato.moviesbattle.dataprovider.common.ListMapper;
@@ -29,8 +28,9 @@ public class GetAllBetsProvider implements GetAllBetsGateway {
 
     @Override
     public List<Bet> execute() {
-        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("quiz","game", "player").build();
+        final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("quiz", "game", "player").build();
         final List<BetEntity> bets = betRepository.findAll(entityGraph);
+
         return listMapper.of(bets, betMapper::of);
     }
 }
