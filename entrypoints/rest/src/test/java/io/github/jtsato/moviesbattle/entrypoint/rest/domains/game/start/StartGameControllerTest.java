@@ -47,13 +47,15 @@ class StartGameControllerTest {
     @DisplayName("Successful to start new game")
     @Test
     void SuccessfulToStartNewGame() throws Exception {
-
+        // Arrange
         when(webRequest.getEmail()).thenReturn("joe.doe.one@xyz.com");
         when(webRequest.getFullName()).thenReturn("Joe Doe");
 
         final StartGameCommand command = new StartGameCommand("joe.doe.one@xyz.com", "Joe Doe");
-        when(startGameUseCase.execute(command)).thenReturn(buildRegisteredGame());
+        when(startGameUseCase.execute(command)).thenReturn(createRegisteredGame());
 
+        // Act
+        // Assert
         mockMvc.perform(post("/v1/games")
             .contentType(MediaType.APPLICATION_JSON_VALUE).accept(MediaType.APPLICATION_JSON_VALUE))
             .andDo(print())
@@ -73,14 +75,14 @@ class StartGameControllerTest {
         verifyNoMoreInteractions(startGameUseCase);
     }
 
-    private static Game buildRegisteredGame() {
-        return new Game(1L, buildJohnSmithPlayer(), Status.IN_PROGRESS,
+    private static Game createRegisteredGame() {
+        return new Game(1L, createJohnSmithPlayer(), Status.IN_PROGRESS,
                 LocalDateTime.parse("2020-03-12T22:04:59.123"),
                 LocalDateTime.parse("2020-03-12T22:04:59.123")
         );
     }
 
-    private static Player buildJohnSmithPlayer() {
+    private static Player createJohnSmithPlayer() {
         return new Player(1L, "John Smith", "john.smith.zero@xyz.com",
                 LocalDateTime.parse("2020-03-12T22:04:59.123"),
                 LocalDateTime.parse("2020-03-12T22:04:59.123"));

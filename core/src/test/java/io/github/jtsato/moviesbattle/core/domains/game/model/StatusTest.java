@@ -15,6 +15,9 @@ class StatusTest {
     @DisplayName("Successful to run status functions")
     @Test
     void successfulToRunStatusFunctions() {
+        // Arrange
+        // Act
+        // Assert
         assertThat(Status.IN_PROGRESS.is(Status.IN_PROGRESS)).isTrue();
         assertThat(Status.IN_PROGRESS.isNot(Status.IN_PROGRESS)).isFalse();
         assertThat(Status.IN_PROGRESS.isNot(Status.OVER)).isTrue();

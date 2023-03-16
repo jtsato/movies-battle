@@ -12,16 +12,19 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 
 @DisplayName("Start Game Command Test")
-public class StartGameCommandTest {
+class StartGameCommandTest {
 
     @DisplayName("Fail to create StartGameCommand with empty email")
     @Test
     void failToCreateStartGameCommandWithEmptyEmail() {
 
+        // Arrange
+        // Act
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
                         () -> new StartGameCommand(null, "playerName"));
 
+        // Assert
         assertThat(exception).isInstanceOf(ConstraintViolationException.class);
 
         final ConstraintViolationException constraintViolationException = (ConstraintViolationException) exception;
@@ -33,10 +36,13 @@ public class StartGameCommandTest {
     @Test
     void failToCreateStartGameCommandWithEmptyName() {
 
+        // Arrange
+        // Act
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
                         () -> new StartGameCommand("playerEmail", null));
 
+        // Assert
         assertThat(exception).isInstanceOf(ConstraintViolationException.class);
 
         final ConstraintViolationException constraintViolationException = (ConstraintViolationException) exception;

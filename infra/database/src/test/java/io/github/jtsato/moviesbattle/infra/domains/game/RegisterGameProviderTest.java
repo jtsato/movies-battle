@@ -35,7 +35,7 @@ class RegisterGameProviderTest {
     @DisplayName("Register Game")
     @Test
     void successfulToRegisterGame() {
-
+        // Arrange
         final Player player = new Player(
                 1L,
                 "John Smith",
@@ -51,8 +51,10 @@ class RegisterGameProviderTest {
                 LocalDateTime.parse("2020-03-12T22:04:59.123")
         );
 
+        // Act
         final Game game = registerGameProvider.execute(newGame);
 
+        // Assert
         assertThat(game).isNotNull();
         assertThat(game.id()).isNotNull();
         assertThat(game.player()).isNotNull();

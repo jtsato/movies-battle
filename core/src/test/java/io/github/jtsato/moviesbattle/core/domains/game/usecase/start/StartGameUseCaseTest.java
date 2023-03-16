@@ -44,6 +44,7 @@ public class StartGameUseCaseTest {
     @Test
     void failToStartANewGameIfThereIsAGameInProgress() {
 
+        // Arrange
         when(getPlayerByEmailGateway.execute("john.smith.zero@xyz.com"))
                 .thenReturn(Optional.empty());
 
@@ -55,10 +56,12 @@ public class StartGameUseCaseTest {
 
         final StartGameCommand command = new StartGameCommand("john.smith.zero@xyz.com", "John Smith");
 
+        // Act
         final Exception exception =
                 Assertions.assertThrows(Exception.class,
                         () -> startGameUseCase.execute(command));
 
+        // Assert
         assertThat(exception).isInstanceOf(InvalidActionException.class);
 
         final InvalidActionException invalidActionException = (InvalidActionException) exception;
@@ -70,6 +73,7 @@ public class StartGameUseCaseTest {
     @Test
     void successfullyToStartANewGameIfThereIsAGameInProgress() {
 
+        // Arrange
         when(getPlayerByEmailGateway.execute("john.smith.zero@xyz.com"))
                 .thenReturn(Optional.empty());
 
