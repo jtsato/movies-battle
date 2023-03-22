@@ -7,4 +7,4 @@ ECHO.
 CALL mvn clean install -Dmaven.test.skip=true
 
 ECHO.
-CALL mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=test" -f ./configuration
+CALL mvn spring-boot:run -Dspring-boot.run.jvmArguments='-Dspring.profiles.active=test' -f ./configuration
