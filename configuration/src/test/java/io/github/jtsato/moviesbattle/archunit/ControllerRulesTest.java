@@ -4,6 +4,7 @@ import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaMember;
 import com.tngtech.archunit.core.domain.PackageMatchers;
+import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
@@ -18,7 +19,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
  * @author Jorge Takeshi Sato
  */
 
-@AnalyzeClasses(packagesOf = MoviesBattleApplication.class)
+@AnalyzeClasses(packagesOf = MoviesBattleApplication.class, importOptions = ImportOption.DoNotIncludeTests.class)
 public class ControllerRulesTest {
 
     @ArchTest
@@ -59,7 +60,8 @@ public class ControllerRulesTest {
                 .or(areDeclaredInRestCommon())
                 .or(areDeclaredInSpringFramework())
                 .or(areDeclaredInApacheCommons())
-                .or(areLogger());
+                .or(areLogger())
+                .or(areDeclaredInByJacoco());
     }
 
     private static DescribedPredicate<JavaMember> areDeclaredInController() {
@@ -112,6 +114,14 @@ public class ControllerRulesTest {
     }
 
     private static DescribedPredicate<JavaMember> areLogger() {
-        return are(declaredIn(org.slf4j.Logger.class)).or(declaredIn(org.slf4j.LoggerFactory.class));
+        return are(declaredIn(org.slf4j.Logger.class))
+                .or(declaredIn(org.slf4j.LoggerFactory.class));
+    }
+
+    private static DescribedPredicate<JavaMember> areDeclaredInByJacoco() {
+        DescribedPredicate<JavaClass> aPackageController = GET_PACKAGE_NAME
+                .is(PackageMatchers.of("..org.jacoco.agent..", "java.."))
+                .as("a package '..org.jacoco.agent..'");
+        return are(declaredIn(aPackageController));
     }
 }
