@@ -39,8 +39,8 @@ jobs:
       - name: Run tests
         run: mvn test -Dspring.profiles.active=test
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: Run SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
