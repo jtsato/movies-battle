@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Jorge Takeshi Sato
@@ -21,7 +20,7 @@ public final class RankingPresenter {
                 .stream()
                 .map(PlayerScorePresenter::of)
                 .sorted(Comparator.comparing(PlayerScoreResponse::score).reversed())
-                .collect(Collectors.toList());
+                .toList();
         return new RankingResponse(scores);
     }
 }

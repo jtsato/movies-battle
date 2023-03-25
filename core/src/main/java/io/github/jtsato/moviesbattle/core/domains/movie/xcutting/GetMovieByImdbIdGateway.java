@@ -7,5 +7,5 @@ import java.util.Optional;
 @FunctionalInterface
 public interface GetMovieByImdbIdGateway {
 
-    Optional<Movie> execute(final String ImdbId);
+    Optional<Movie> execute(final String imdbId);
 }

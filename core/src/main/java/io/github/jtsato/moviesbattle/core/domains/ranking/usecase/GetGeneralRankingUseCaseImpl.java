@@ -56,7 +56,7 @@ public class GetGeneralRankingUseCaseImpl implements GetGeneralRankingUseCase {
 
         bets.forEach(bet -> {
             final Player player = bet.quiz().game().player();
-            int count = bet.winTheBet() ? 1 : 0;
+            int count = Boolean.TRUE.equals(bet.winTheBet()) ? 1 : 0;
             final Totalizer totalizer = playersTotalizer.get(player);
             if (totalizer == null) {
                 playersTotalizer.put(player, new Totalizer(1, count));

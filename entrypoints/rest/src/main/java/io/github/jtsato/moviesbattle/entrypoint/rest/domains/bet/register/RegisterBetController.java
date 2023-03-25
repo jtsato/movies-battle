@@ -46,7 +46,8 @@ public class RegisterBetController implements RegisterBetApiMethod {
     @PostMapping
     public BetResponse execute(final Authentication authentication, @RequestBody @DefaultValue final RegisterBetRequest request) {
         log.info("Starting Controller -> RegisterBetController for Player {}", webRequest.getEmail());
-        log.info("Starting Controller -> RegisterBetController with Bet option id {}", JsonConverter.of(request));
+        final String json = JsonConverter.of(request);
+        log.info("Starting Controller -> RegisterBetController with Bet option id {}", json);
         final RegisterBetCommand command = new RegisterBetCommand(webRequest.getEmail(), webRequest.getFullName(), request.getOptionId());
         final Bet bet = registerBetUseCase.execute(command);
         return BetPresenter.of(bet);

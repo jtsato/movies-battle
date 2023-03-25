@@ -23,8 +23,8 @@ public class GetMovieByImdbIdProvider implements GetMovieByImdbIdGateway {
     private final MovieRepository movieRepository;
 
     @Override
-    public Optional<Movie> execute(String ImdbId) {
-        final Optional<MovieEntity> optional = movieRepository.findByImdbIdIgnoreCase(ImdbId);
+    public Optional<Movie> execute(String imdbId) {
+        final Optional<MovieEntity> optional = movieRepository.findByImdbIdIgnoreCase(imdbId);
         return optional.map(movieMapper::of);
     }
 }

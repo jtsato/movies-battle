@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
  */
 
 @DisplayName("Start Game Use Case Test")
-public class StartGameUseCaseTest {
+class StartGameUseCaseTest {
 
     @Mock private final GetPlayerByEmailGateway getPlayerByEmailGateway = Mockito.mock(GetPlayerByEmailGateway.class);
     @Mock private final RegisterPlayerUseCase registerPlayerUseCase = Mockito.mock(RegisterPlayerUseCase.class);
