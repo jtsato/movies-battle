@@ -11,8 +11,6 @@ import io.github.jtsato.moviesbattle.core.domains.player.model.Player;
 import io.github.jtsato.moviesbattle.core.domains.player.usecase.RegisterPlayerUseCase;
 import io.github.jtsato.moviesbattle.core.domains.player.xcutting.GetPlayerByEmailGateway;
 import io.github.jtsato.moviesbattle.core.domains.quiz.model.Quiz;
-import io.github.jtsato.moviesbattle.core.exception.InvalidActionException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
