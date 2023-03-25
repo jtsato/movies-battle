@@ -31,12 +31,6 @@
         <sonar.organization>jtsato</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.projectName>Movies Battle</sonar.projectName>
-        <sonar.coverage.jacoco.xmlReportPaths>
-            configuration/target/site/jacoco/jacoco.xml,
-            core/target/site/jacoco/jacoco.xml,
-            entrypoints/rest/target/site/jacoco/jacoco.xml,
-            infra/database/target/site/jacoco/jacoco.xml
-        </sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <modules>
