@@ -8,9 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.SecureRandom;
 import java.util.Optional;
-import java.util.Random;
 
 /**
  * @author Jorge Takeshi Sato
@@ -21,17 +19,13 @@ import java.util.Random;
 @Service
 public class GetRandomMovieProvider implements GetRandomMovieGateway {
 
-    private static final Random random = new SecureRandom();
-
     private final MovieMapper movieMapper = Mappers.getMapper(MovieMapper.class);
-
     private final MovieRepository movieRepository;
 
     @Override
-    public Optional<Movie> execute() {
-        final long count = movieRepository.count();
-        final int index = (int) (random.nextInt() * count);
-        final Optional<MovieEntity> optional = movieRepository.findAll(PageRequest.of(index, 1)).stream().findFirst();
+    public Optional<Movie> execute(int index) {
+        final PageRequest pageRequest = PageRequest.of(index, 1);
+        final Optional<MovieEntity> optional = movieRepository.findAll(pageRequest).stream().findFirst();
         return optional.map(movieMapper::of);
     }
 }

@@ -17,36 +17,25 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Jorge Takeshi Sato
  */
 
-@DisplayName("Get Movie By ImdbId Provider Test")
+@DisplayName("Get Random Movie Provider Test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-@Import({GetMovieByImdbIdProvider.class})
-@Sql("GetMovieByImdbIdProviderTest.sql")
-class GetMovieByImdbIdProviderTest {
+@Import({GetRandomMovieProvider.class})
+@Sql("GetRandomMovieProviderTest.sql")
+class GetRandomMovieProviderTest {
 
     @Autowired
-    private GetMovieByImdbIdProvider getMovieByImdbIdProvider;
+    private GetRandomMovieProvider getRandomMovieProvider;
 
     @Autowired
     private MovieRepository movieRepository;
 
-    @DisplayName("Fail to get movie by imdbId when imdbId does not exist")
+    @DisplayName("Get Random Movie")
     @Test
-    void failToGetMovieByImdbIdWhenImdbIdDoesNotExist() {
+    void successfulToGetRandomMovie() {
         // Arrange
         // Act
-        final Optional<Movie> optional = getMovieByImdbIdProvider.execute("tt0468590");
-
-        // Assert
-        assertThat(optional).isNotPresent();
-    }
-
-    @DisplayName("Get Movie By ImdbId")
-    @Test
-    void successfulToGetMovieByImdbId() {
-        // Arrange
-        // Act
-        final Optional<Movie> optional = getMovieByImdbIdProvider.execute("tt0468569");
+        final Optional<Movie> optional = getRandomMovieProvider.execute(0);
 
         // Assert
         assertThat(optional).isPresent();
@@ -55,7 +44,7 @@ class GetMovieByImdbIdProviderTest {
 
         assertThat(movie).isNotNull();
 
-        assertThat(movie.id()).isEqualTo(2L);
+        assertThat(movie.id()).isEqualTo(1L);
         assertThat(movie.imdbId()).isEqualTo("tt0468569");
         assertThat(movie.title()).isEqualTo("The Dark Knight");
         assertThat(movie.year()).isEqualTo("2008");
@@ -65,6 +54,6 @@ class GetMovieByImdbIdProviderTest {
         assertThat(movie.score()).isEqualTo(23653386L);
         assertThat(movie.posterUrl()).isEqualTo("https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg");
 
-        assertThat(movieRepository.count()).isEqualTo(2L);
+        assertThat(movieRepository.count()).isEqualTo(1L);
     }
 }

@@ -1,0 +1,1 @@
+INSERT INTO MOVIES (IMDB_ID, TITLE, YEAR_, GENRE, IMDB_RATING, IMDB_VOTES, POSTER_URL) VALUES ('tt0468569', 'The Dark Knight', '2008', 'Action, Crime, Drama', 9, 2628154,'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg');

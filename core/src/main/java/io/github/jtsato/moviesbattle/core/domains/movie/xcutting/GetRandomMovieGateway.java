@@ -7,5 +7,5 @@ import java.util.Optional;
 @FunctionalInterface
 public interface GetRandomMovieGateway {
 
-    Optional<Movie> execute();
+    Optional<Movie> execute(int index);
 }

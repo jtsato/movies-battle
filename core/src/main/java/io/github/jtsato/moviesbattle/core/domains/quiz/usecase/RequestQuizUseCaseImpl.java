@@ -20,9 +20,11 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import jakarta.inject.Named;
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /*
  * A Use Case follows these steps:
@@ -40,12 +42,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
 
+    private static final Random random = new SecureRandom();
+
     private final GetPlayerByEmailGateway getPlayerByEmailGateway;
     private final RegisterPlayerUseCase registerPlayerUseCase;
     private final GetGameByPlayerIdAndStatusGateway getGameByPlayerIdAndStatusGateway;
     private final GetUnansweredQuizzesByGateway getUnansweredQuizzesByGateway;
-    private final GetRandomMovieGateway getRandomMovieGateway;
     private final GetAllMoviesCountGateway getAllMoviesCountGateway;
+    private final GetRandomMovieGateway getRandomMovieGateway;
     private final GetAllQuizzesByGameIdGateway getAllQuizzesByGameIdGateway;
     private final GetLocalDateTime getLocalDateTime;
     private final RegisterQuizGateway registerQuizGateway;
@@ -143,7 +147,9 @@ public class RequestQuizUseCaseImpl implements RequestQuizUseCase {
     }
 
     private Movie getRandomMovie() {
-        final Optional<Movie> optional = getRandomMovieGateway.execute();
+        final long count = getAllMoviesCountGateway.execute();
+        final int index = random.nextInt((int) (count));
+        final Optional<Movie> optional = getRandomMovieGateway.execute(index);
         return optional.orElseThrow(() -> new NotFoundException("validation.movies.database.empty"));
     }
 

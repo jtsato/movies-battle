@@ -47,8 +47,8 @@ class RequestQuizUseCaseTest {
                     registerPlayerUseCase,
                     getGameByPlayerIdAndStatusGateway,
                     getUnansweredQuizzesByGateway,
-                    getRandomMovieGateway,
                     getAllMoviesCountGateway,
+                    getRandomMovieGateway,
                     getAllQuizzesByGameIdGateway,
                     getLocalDateTime,
                     registerQuizGateway);
