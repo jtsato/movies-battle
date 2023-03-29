@@ -18,7 +18,7 @@ import java.util.Optional;
 @Service
 public class GetPlayerByEmailProvider implements GetPlayerByEmailGateway {
 
-    private final PlayerMapper playerMapper = Mappers.getMapper(PlayerMapper.class);
+    private static final PlayerMapper playerMapper = Mappers.getMapper(PlayerMapper.class);
     
     private final PlayerRepository playerRepository;
 

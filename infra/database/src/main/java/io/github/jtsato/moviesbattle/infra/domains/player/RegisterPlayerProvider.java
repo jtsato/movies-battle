@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class RegisterPlayerProvider implements RegisterPlayerGateway {
 
-    private final PlayerMapper playerMapper = Mappers.getMapper(PlayerMapper.class);
+    private static final PlayerMapper playerMapper = Mappers.getMapper(PlayerMapper.class);
     
     private final PlayerRepository playerRepository;
 

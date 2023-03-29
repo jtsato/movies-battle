@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class RegisterBetProvider implements RegisterBetGateway {
 
-    private final BetMapper betMapper = Mappers.getMapper(BetMapper.class);
+    private static final BetMapper betMapper = Mappers.getMapper(BetMapper.class);
 
     private final BetRepository betRepository;
 

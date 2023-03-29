@@ -22,7 +22,7 @@ import java.util.List;
 public class GetAllBetsProvider implements GetAllBetsGateway {
 
     private final ListMapper<Bet, BetEntity> listMapper = new ListMapper<>() { };
-    private final BetMapper betMapper = Mappers.getMapper(BetMapper.class);
+    private static final BetMapper betMapper = Mappers.getMapper(BetMapper.class);
 
     private final BetRepository betRepository;
 

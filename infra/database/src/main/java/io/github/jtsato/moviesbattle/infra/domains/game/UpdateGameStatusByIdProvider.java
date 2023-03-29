@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 public class UpdateGameStatusByIdProvider implements UpdateGameStatusByIdGateway {
 
-    private final GameMapper gameMapper = Mappers.getMapper(GameMapper.class);
+    private static final GameMapper gameMapper = Mappers.getMapper(GameMapper.class);
 
     private final GameRepository gameRepository;
 

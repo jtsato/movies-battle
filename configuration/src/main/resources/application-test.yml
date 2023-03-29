@@ -3,6 +3,9 @@ logging:
       io.github.jtsato.moviesbattle: debug
       org.springframework.web: warn
       io.swagger.models.parameters.AbstractSerializableParameter: error
+app:
+   movies-catalog:
+      url: http://localhost:8080
 server:
    http2:
       enabled: true

@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class RegisterQuizProvider implements RegisterQuizGateway {
 
-    private final QuizMapper quizMapper = Mappers.getMapper(QuizMapper.class);
+    private static final QuizMapper quizMapper = Mappers.getMapper(QuizMapper.class);
     
     private final QuizRepository quizRepository;
 
