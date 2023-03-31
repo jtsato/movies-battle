@@ -17,19 +17,19 @@ import static org.mockito.Mockito.when;
  */
 
 @DisplayName("Get Movie By ImdbId Provider Test")
-class GetMovieByImdbIdServiceTest {
+class GetMovieByImdbIdRestClientProviderTest {
 
     @Mock
-    private final MoviesClient moviesClient = Mockito.mock(MoviesClient.class);
+    private final MoviesRestClient moviesRestClient = Mockito.mock(MoviesRestClient.class);
 
     @InjectMocks
-    private final GetMovieByImdbIdService getMovieByImdbIdProvider = new GetMovieByImdbIdService(moviesClient);
+    private final GetMovieByImdbIdRestClientProvider getMovieByImdbIdProvider = new GetMovieByImdbIdRestClientProvider(moviesRestClient);
 
     @DisplayName("Fail to get movie by imdbId when imdbId does not exist")
     @Test
     void failToGetMovieByImdbIdWhenImdbIdDoesNotExist() {
         // Arrange
-        when(moviesClient.getMovieByImdbId("tt0468590")).thenReturn(null);
+        when(moviesRestClient.getMovieByImdbId("tt0468590")).thenReturn(null);
 
         // Act
         final Optional<Movie> optional = getMovieByImdbIdProvider.execute("tt0468590");
@@ -42,7 +42,7 @@ class GetMovieByImdbIdServiceTest {
     @Test
     void successfulToGetMovieByImdbId() {
         // Arrange
-        when(moviesClient.getMovieByImdbId("tt0468569"))
+        when(moviesRestClient.getMovieByImdbId("tt0468569"))
                 .thenReturn(new MovieResponse(2L, "tt0468569", "The Dark Knight", "2008", "Action, Crime, Drama", 9.0F, 2628154L, 23653386F, "http://poster.url"));
 
         // Act

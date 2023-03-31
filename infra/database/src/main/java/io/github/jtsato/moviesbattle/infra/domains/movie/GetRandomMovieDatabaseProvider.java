@@ -17,15 +17,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class GetRandomMovieProvider implements GetRandomMovieGateway {
+public class GetRandomMovieDatabaseProvider implements GetRandomMovieGateway {
 
-    private final MovieMapper movieMapper = Mappers.getMapper(MovieMapper.class);
+    private final MovieDatabaseMapper movieDatabaseMapper = Mappers.getMapper(MovieDatabaseMapper.class);
     private final MovieRepository movieRepository;
 
     @Override
     public Optional<Movie> execute(int index) {
         final PageRequest pageRequest = PageRequest.of(index, 1);
         final Optional<MovieEntity> optional = movieRepository.findAll(pageRequest).stream().findFirst();
-        return optional.map(movieMapper::of);
+        return optional.map(movieDatabaseMapper::of);
     }
 }

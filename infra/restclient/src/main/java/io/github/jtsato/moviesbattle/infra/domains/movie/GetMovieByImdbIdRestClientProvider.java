@@ -4,7 +4,6 @@ import io.github.jtsato.moviesbattle.core.domains.movie.model.Movie;
 import io.github.jtsato.moviesbattle.core.domains.movie.xcutting.GetMovieByImdbIdGateway;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,16 +12,15 @@ import java.util.Optional;
  * @author Jorge Takeshi Sato
  */
 
-@Primary
 @RequiredArgsConstructor
 @Service
-public class GetMovieByImdbIdService implements GetMovieByImdbIdGateway {
+public class GetMovieByImdbIdRestClientProvider implements GetMovieByImdbIdGateway {
 
-    private static final MovieResponseMapper MOVIE_RESPONSE_MAPPER = Mappers.getMapper(MovieResponseMapper.class);
-    private final MoviesClient moviesClient;
+    private static final MovieRestClientMapper MOVIE_RESPONSE_MAPPER = Mappers.getMapper(MovieRestClientMapper.class);
+    private final MoviesRestClient moviesRestClient;
 
     public Optional<Movie> execute(final String imdbId) {
-        final MovieResponse response = moviesClient.getMovieByImdbId(imdbId);
+        final MovieResponse response = moviesRestClient.getMovieByImdbId(imdbId);
         final Movie movie = MOVIE_RESPONSE_MAPPER.of(response);
         return Optional.ofNullable(movie);
     }

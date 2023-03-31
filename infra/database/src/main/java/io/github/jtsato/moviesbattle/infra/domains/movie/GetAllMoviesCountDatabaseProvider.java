@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class GetAllMoviesCountProvider implements GetAllMoviesCountGateway {
+public class GetAllMoviesCountDatabaseProvider implements GetAllMoviesCountGateway {
 
     private final MovieRepository movieRepository;
 

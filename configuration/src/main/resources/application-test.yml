@@ -6,6 +6,13 @@ logging:
 app:
    movies-catalog:
       url: http://localhost:8080
+   gateway:
+      get-all-movies-count:
+         provider-classname: GetAllMoviesCountRestClientProvider
+      get-movie-by-imdb-id:
+         provider-classname: GetMovieByImdbIdRestClientProvider
+      get-random-movie:
+         provider-classname: GetRandomMovieRestClientProvider
 server:
    http2:
       enabled: true
@@ -74,4 +81,3 @@ springdoc:
       path: /swagger-ui.html
    api-docs:
       path: /v3/api-docs
-

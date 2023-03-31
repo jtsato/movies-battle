@@ -4,7 +4,6 @@ import io.github.jtsato.moviesbattle.core.domains.movie.model.Movie;
 import io.github.jtsato.moviesbattle.core.domains.movie.xcutting.GetRandomMovieGateway;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,17 +12,16 @@ import java.util.Optional;
  * @author Jorge Takeshi Sato
  */
 
-@Primary
 @RequiredArgsConstructor
 @Service
-public class GetRandomMovieService implements GetRandomMovieGateway {
+public class GetRandomMovieRestClientProvider implements GetRandomMovieGateway {
 
-    private static final MovieResponseMapper MOVIE_RESPONSE_MAPPER = Mappers.getMapper(MovieResponseMapper.class);
-    private final MoviesClient moviesClient;
+    private static final MovieRestClientMapper MOVIE_RESPONSE_MAPPER = Mappers.getMapper(MovieRestClientMapper.class);
+    private final MoviesRestClient moviesRestClient;
 
     @Override
     public Optional<Movie> execute(int index) {
-        final MovieResponse response = moviesClient.getRandomMovie();
+        final MovieResponse response = moviesRestClient.getRandomMovie();
         return Optional.of(MOVIE_RESPONSE_MAPPER.of(response));
     }
 }

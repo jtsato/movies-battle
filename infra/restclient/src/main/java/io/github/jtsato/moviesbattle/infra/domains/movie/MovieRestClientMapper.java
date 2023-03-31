@@ -8,8 +8,9 @@ import org.mapstruct.Mapper;
  */
 
 @Mapper
-public interface MovieResponseMapper {
+public interface MovieRestClientMapper {
 
     Movie of(final MovieResponse movieResponse);
+
     MovieResponse of(final Movie movie);
 }

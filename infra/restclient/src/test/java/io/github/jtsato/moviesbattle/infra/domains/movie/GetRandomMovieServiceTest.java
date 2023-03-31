@@ -20,16 +20,16 @@ import static org.mockito.Mockito.when;
 class GetRandomMovieServiceTest {
 
     @Mock
-    private final MoviesClient moviesClient = Mockito.mock(MoviesClient.class);
+    private final MoviesRestClient moviesRestClient = Mockito.mock(MoviesRestClient.class);
 
     @InjectMocks
-    private final GetRandomMovieService getRandomMovieProvider = new GetRandomMovieService(moviesClient);
+    private final GetRandomMovieRestClientProvider getRandomMovieProvider = new GetRandomMovieRestClientProvider(moviesRestClient);
 
     @DisplayName("Get Random Movie")
     @Test
     void successfulToGetRandomMovie() {
         // Arrange
-        when(moviesClient.getRandomMovie())
+        when(moviesRestClient.getRandomMovie())
                 .thenReturn(buildMovieResponse());
 
         // Act

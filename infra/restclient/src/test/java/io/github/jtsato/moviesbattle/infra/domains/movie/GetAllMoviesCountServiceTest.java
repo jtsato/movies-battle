@@ -17,20 +17,20 @@ import static org.mockito.Mockito.when;
 class GetAllMoviesCountServiceTest {
 
     @Mock
-    private final MoviesClient moviesClient = Mockito.mock(MoviesClient.class);
+    private final MoviesRestClient moviesRestClient = Mockito.mock(MoviesRestClient.class);
 
     @InjectMocks
-    private final GetAllMoviesCountService getAllMoviesCountService = new GetAllMoviesCountService(moviesClient);
+    private final GetAllMoviesCountRestClientProvider getAllMoviesCountProvider = new GetAllMoviesCountRestClientProvider(moviesRestClient);
 
     @DisplayName("Get All Movies Count")
     @Test
     void successfulToGetAllMoviesCount() {
         // Arrange
-        when(moviesClient.getAllMoviesCount())
+        when(moviesRestClient.getAllMoviesCount())
                 .thenReturn(new MoviesCountResponse(2L));
 
         // Act
-        final Long actual = getAllMoviesCountService.execute();
+        final Long actual = getAllMoviesCountProvider.execute();
 
         // Assert
         assertThat(actual).isEqualTo(2L);

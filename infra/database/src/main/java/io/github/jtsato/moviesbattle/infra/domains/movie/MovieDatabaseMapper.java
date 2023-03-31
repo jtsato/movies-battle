@@ -9,9 +9,10 @@ import org.mapstruct.Mapping;
  */
 
 @Mapper
-public interface MovieMapper {
+public interface MovieDatabaseMapper {
 
     Movie of(final MovieEntity movieEntity);
+
     @Mapping(target = "score", ignore = true)
     MovieEntity of(final Movie movie);
 }

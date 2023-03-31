@@ -17,12 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Get All Movies Count Provider Test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-@Import({GetAllMoviesCountProvider.class})
+@Import({GetAllMoviesCountDatabaseProvider.class})
 @Sql("GetAllMoviesCountProviderTest.sql")
-class GetAllMoviesCountProviderTest {
+class GetAllMoviesCountDatabaseProviderTest {
 
     @Autowired
-    private GetAllMoviesCountProvider getAllMoviesCountProvider;
+    private GetAllMoviesCountDatabaseProvider getAllMoviesCountProvider;
 
     @Autowired
     private MovieRepository movieRepository;

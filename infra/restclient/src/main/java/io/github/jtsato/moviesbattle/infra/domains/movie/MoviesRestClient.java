@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 @FeignClient(name = "movies", url = "${app.movies-catalog.url}")
-public interface MoviesClient {
+public interface MoviesRestClient {
 
     @GetMapping(value = "/v1/movies/count")
     MoviesCountResponse getAllMoviesCount();

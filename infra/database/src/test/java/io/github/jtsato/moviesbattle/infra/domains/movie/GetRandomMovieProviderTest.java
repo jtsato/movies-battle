@@ -20,12 +20,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Get Random Movie Provider Test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-@Import({GetRandomMovieProvider.class})
+@Import({GetRandomMovieDatabaseProvider.class})
 @Sql("GetRandomMovieProviderTest.sql")
 class GetRandomMovieProviderTest {
 
     @Autowired
-    private GetRandomMovieProvider getRandomMovieProvider;
+    private GetRandomMovieDatabaseProvider getRandomMovieProvider;
 
     @Autowired
     private MovieRepository movieRepository;
