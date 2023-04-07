@@ -23,7 +23,7 @@ public class GetPlayerByEmailProvider implements GetPlayerByEmailGateway {
     private final PlayerRepository playerRepository;
 
     @Override
-    public Optional<Player> execute(String email) {
+    public Optional<Player> execute(final String email) {
         final Optional<PlayerEntity> optional = playerRepository.findByEmailIgnoreCase(email);
         return optional.map(playerMapper::of);
     }

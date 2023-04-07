@@ -27,7 +27,7 @@ public class GetAllQuizzesByGameIdProvider implements GetAllQuizzesByGameIdGatew
     private final QuizRepository quizRepository;
 
     @Override
-    public List<Quiz> execute(Long gameId) {
+    public List<Quiz> execute(final Long gameId) {
         final EntityGraph entityGraph = DynamicEntityGraph.loading().addPath("game").addPath("bet").build();
         final List<QuizEntity> quizEntities = quizRepository.findByGameId(gameId, entityGraph);
 
