@@ -1,0 +1,91 @@
+@startuml 03-ComponentDiagram
+!include <C4/C4_Container>
+
+/' Level 3: Component diagram
+   The Component diagram shows how a container is made up of a number of "components",
+   what each of those components are, their responsibilities and the technology/implementation details.
+'/
+
+title "Component Diagram for OAS-Validator API"
+
+AddElementTag("storage", $shape=RoundedBoxShape())
+
+LAYOUT_TOP_DOWN()
+
+Person(person, "Player", "A person who wants to play the game")
+System(ui, "UI", "A web application that allows players to battle with most popular movies")
+
+System_Boundary(application, "Movies Battle Game", "A game that allows players to battle with most popular movies") {
+   Container_Boundary(restEntrypoint, "REST Entrypoint") {
+      Container(startGameController, "Start Game Controller", "Component: @RestController", "A controller that starts a game")
+   }
+   Container_Boundary(core, "Core Business") {
+      Container(startGameUseCase, "Start Game UseCase", "Component: @Named", "A use case that starts a game")
+      Container(getPlayerByEmailGateway, "1. Get Player By Email Gateway", "Component: @FunctionalInterface", "A gateway that gets a player by email")
+      Container(getPlayerByEmailGateway1, "1.1", "Jump")
+      Container(registerPlayerUseCase, "2. Register Player UseCase", "Component: @Named", "A use case that registers a player")
+      Container(getGameByPlayerIdAndStatusGateway, "3. Get Game By Player Id And Status Gateway", "Component: @FunctionalInterface", "A gateway that gets a game by player id and status")
+      Container(getGameByPlayerIdAndStatusGateway1, "3.1", "Jump")
+      Container(getLocalDateTime, "4. Get Local Date Time", "Component: @FunctionalInterface", "A gateway that gets a local date time")
+      Container(registerPlayerGateway, "2.1 Register Player Gateway", "Component: @FunctionalInterface", "A gateway that registers a player")
+      Container(getLocalDateTimeImpl, "4.1 Get Local Date Time Impl", "Component: @Named", "An implementation of a gateway that gets a local date time")
+      Container(registerGameGateway, "5 Register Game Gateway", "Component: @FunctionalInterface", "A gateway that registers a game")
+      Container(registerGameGateway1, "5.1", "Jump")
+   }
+   Container_Boundary(infra, "Infrastructure") {
+      Container(getPlayerByEmailProvider, "1.1 Get Player By Email Provider", "Component: @Service", "A provider that gets a player by email")
+      Container(registerPlayerProvider, "2.1.1 Register Player Provider", "Component: @Service", "A provider that registers a player")
+      Container(getGameByPlayerIdAndStatusProvider, "3.1.1 Get Game By Player Id And Status Provider", "Component: @Service", "A provider that gets a game by player id and status")
+      Container(registerGameProvider, "5.1.1 Register Game Provider", "Component: @Service", "A provider that registers a game")
+      Container_Boundary(repository, "Repository") {
+         Container(playerRepository, "Player Repository", "Component: @Repository", "A repository that persists a player")
+         Container(gameRepository, "Game Repository", "Component: @Repository", "A repository that persists a game")
+         Container(orm, "Object Relational Mapper", "JPA : Hibernate", "A component that maps objects to relational tables")
+      }
+   }
+}
+
+ContainerDb(h2, "Database", "H2", "Stores the game data", $tags = "storage")
+
+Rel_D(person, ui, "Uses")
+Rel_D(ui, startGameController, "Call", "JSON via HTTPS")
+Rel_D(startGameController, startGameUseCase, "Execute", "method")
+
+Rel_D(startGameUseCase, getPlayerByEmailGateway, "Execute", "method")
+Rel_Neighbor(startGameUseCase, registerPlayerUseCase, "Execute", "method")
+Rel_D(startGameUseCase, getGameByPlayerIdAndStatusGateway, "Execute", "method")
+Rel_D(getGameByPlayerIdAndStatusGateway, getGameByPlayerIdAndStatusGateway1, "", "")
+
+Rel_D(startGameUseCase, getLocalDateTime, "Execute", "method")
+Rel_D(startGameUseCase, registerGameGateway, "Execute", "method")
+Rel_D(registerGameGateway, registerGameGateway1, "", "")
+Rel_D(registerPlayerUseCase, registerPlayerGateway, "Execute", "method")
+Rel_D(getLocalDateTime, getLocalDateTimeImpl, "Implement", "interface")
+
+Rel_D(getPlayerByEmailGateway, getPlayerByEmailGateway1, "", "")
+Rel_D(getPlayerByEmailGateway1, getPlayerByEmailProvider, "Implement", "interface")
+
+Rel_D(registerPlayerGateway, registerPlayerProvider, "Implement", "interface")
+Rel_D(registerGameGateway1, registerGameProvider, "Implement", "interface")
+Rel_D(getGameByPlayerIdAndStatusGateway1, getGameByPlayerIdAndStatusProvider, "Implement", "interface")
+
+Rel_D(getPlayerByEmailProvider, playerRepository, "Execute", "method")
+Rel_D(registerPlayerProvider, playerRepository, "Execute", "method")
+Rel_D(getGameByPlayerIdAndStatusProvider, gameRepository, "Execute", "method")
+Rel_D(registerGameProvider, gameRepository, "Uses", "Java Persistence API")
+
+Rel_D(playerRepository, orm, "Uses", "Java Persistence API")
+Rel_D(gameRepository, orm, "Uses", "Java Persistence API")
+Rel_D(orm, h2, "Save to", "tables")
+
+Lay_L(registerPlayerUseCase, getPlayerByEmailGateway)
+Lay_L(getGameByPlayerIdAndStatusGateway, registerPlayerUseCase)
+Lay_L(getLocalDateTime, getGameByPlayerIdAndStatusGateway)
+
+Lay_L(registerPlayerProvider, getPlayerByEmailProvider)
+Lay_L(getGameByPlayerIdAndStatusProvider, registerPlayerProvider)
+Lay_L(registerGameProvider, getGameByPlayerIdAndStatusProvider)
+
+LAYOUT_WITH_LEGEND()
+
+@enduml

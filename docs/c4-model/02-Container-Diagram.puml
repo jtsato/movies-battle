@@ -1,0 +1,32 @@
+@startuml 02-ContainerDiagram
+!include <C4/C4_Container>
+
+/' Level 2: Container diagram
+   A container is something like a server-side web application, single-page application, desktop application,
+   mobile app, database schema, file system, etc.
+   Essentially, a container is a separately runnable/deployable unit (e.g. a separate process space)
+   that executes code or stores data.
+'/
+
+title "Container Diagram for Movies Battle Game"
+
+AddElementTag("microService", $shape=EightSidedShape(), $legendText="micro service\'")
+AddElementTag("storage", $shape=RoundedBoxShape())
+
+LAYOUT_LEFT_RIGHT()
+
+Person(person, "Player", "A person who wants to play the game")
+
+System_Boundary(container-diagram, "Movies Battle Game", "A system that validates specifications") {
+Container(webapi, "Movies Battle", "SpringBoot, Java", "A web api that manages movies battles", $tags = "microService")
+ContainerDb(database, "Database", "H2", "A database that stores the movies and battles", $tags = "storage")
+}
+
+Rel(person, webapi, "Plays the game", "HTTPS")
+Rel(webapi, database, "Reads from and writes to")
+
+Lay_R(webapi, database)
+
+LAYOUT_WITH_LEGEND()
+
+@enduml

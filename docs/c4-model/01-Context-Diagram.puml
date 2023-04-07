@@ -1,0 +1,18 @@
+@startuml 01-ContextDiagram
+!include <C4/C4_Container>
+
+/' Level 1: System Context diagram
+   A System Context diagram is a good starting point for diagramming and documenting a software system,
+   allowing you to step back and see the big picture.
+'/
+
+title "Context Diagram for Movies Battle Game"
+
+Person(person, "Player", "A person who wants to play the game")
+System(moviesbattle, "Movies Battle", "REST API for a card game style application")
+
+Rel(person, moviesbattle, "Plays the game")
+
+LAYOUT_WITH_LEGEND()
+
+@enduml
