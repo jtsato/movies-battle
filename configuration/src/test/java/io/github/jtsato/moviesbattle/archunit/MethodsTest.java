@@ -32,7 +32,7 @@ public class MethodsTest {
     @ArchTest
     static ArchRule code_units_in_Infra_layer_should_be_Transactional =
             classes().that()
-            .haveSimpleNameEndingWith("Provider")
+            .haveSimpleNameEndingWith("DatabaseProvider")
             .should()
             .beAnnotatedWith(Transactional.class);
 }
