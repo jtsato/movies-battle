@@ -1,5 +1,24 @@
 # Movies Battle
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=coverage)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jtsato_movies-battle&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=jtsato_movies-battle)
+
+**Table of Contents**
+* [Pre-requisites](#prerequisites)
+* [Technology Stack](#technology-stack)
+* [Running the application locally](#running-the-application-locally)
+* [Running the tests locally](#running-the-tests-locally)
+* [Available Endpoints](#available-endpoints)
+* [Usecases](#usecases)
+* [Solution Structure](#solution-structure)
+
 ## Prerequisites
 
 * JDK 17
