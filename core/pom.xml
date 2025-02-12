@@ -12,24 +12,24 @@
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <java.version>22</java.version>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
-        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <glassfish.expressly.version>5.0.0</glassfish.expressly.version>
-        <lombok.version>1.18.26</lombok.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-collections.version>20040616</commons-collections.version>
-        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
-        <assertj-core.version>3.24.2</assertj-core.version>
-        <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
-        <pitest-maven.version>1.9.10</pitest-maven.version>
-        <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
-        <jacoco.agent.version>0.8.8</jacoco.agent.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <lombok.version>1.18.36</lombok.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-collections.version>4.4</commons-collections.version>
+        <junit-jupiter-engine.version>5.11.4</junit-jupiter-engine.version>
+        <assertj-core.version>3.27.3</assertj-core.version>
+        <mockito-junit-jupiter.version>5.15.2</mockito-junit-jupiter.version>
+        <pitest-maven.version>1.18.0</pitest-maven.version>
+        <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
+        <jacoco.agent.version>0.8.12</jacoco.agent.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -65,8 +65,8 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
         <dependency>
